@@ -1,0 +1,13 @@
+Install maven and scala
+apt-get maven2 scala
+
+Follow these instructions
+http://maven.apache.org/guides/getting-started/index.html#How_do_I_make_my_first_Maven_project
+http://scala-tools.org/mvnsites/maven-scala-plugin/usage.html
+http://www.scalanlp.org/?page_id=6
+
+Download everything and test using the following commands
+mvn compile
+mvn test
+mvn package
+mvn clean

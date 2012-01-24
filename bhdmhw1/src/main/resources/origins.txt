@@ -1,0 +1,4 @@
+Polarity data from http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CCAQFjAA&url=http%3A%2F%2Fwww.cs.cornell.edu%2Fpeople%2Fpabo%2Fmovie-review-data%2F&ei=ux8eT5GpHcKeiQKh2IHICw&usg=AFQjCNELSlSs6Fo0N-1A2LH5PrPXowvQgA&sig2=pfV0l4NkKcsJyzmxQwCcwQ
+http://www.koders.com/c/fid6C772BFE1925D9797AD84213004ABB198FC41069.aspx?s=crc for mysqlStopWords
+http://www.ranks.nl/resources/stopwords.html for google ranknl and ranknlall stop words
+http://tartarus.org/martin/PorterStemmer/scala.txt for the porter stemming algorithms
