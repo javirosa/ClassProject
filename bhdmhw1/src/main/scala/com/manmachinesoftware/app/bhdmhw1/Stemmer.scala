@@ -1,5 +1,5 @@
 
-
+package com.manmachinesoftware.app.bhdmhw1
 /*
 
    Porter stemmer in Scala. The original paper is in
@@ -341,10 +341,10 @@ object runit
 
 
     val filename = args(0)
-    val source = Source.fromFile(filename)
+    val source = Source.fromFile(new java.io.File(filename))
     var stemmer = new Stemmer()
 
-    for (line <- source.getLines)
+    for (line <- source.getLines())
     {
 
       var l = line.trim()

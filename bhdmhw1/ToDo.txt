@@ -1,0 +1,28 @@
+Parse data
+- Read in data
+- Generate Subset of data
+- Tokenize
+- Index
+- Vectorize
+
+- Execute Naive Bayes
+-- Prior
+-- Multinomial
+-- Binomial
+-- Train
+
+Xtra Credit
+- Stop words
+- Stem
+
+Evaluation
+- 10-fold cross validation
+-- Generate subsets of the data
+-- Run Naive Bayes and Score
+
+- F1 Score
+- AOC*?
+
+
+Scala fix
+http://stackoverflow.com/questions/336144/building-a-scala-app-with-maven-that-has-java-source-mixed-in
