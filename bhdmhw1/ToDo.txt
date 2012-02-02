@@ -1,21 +1,25 @@
-Parse data
+PARSE DATA
 - Read in data
 - Generate Subset of data
 - Tokenize
 - Index
 - Vectorize
 
-- Execute Naive Bayes
--- Prior
+Convert to LabeledDocument then this can be dumped into a Naive Bayes Classifier
+
+http://www.scalanlp.org/docs/core/data/#scalanlp.data.Example
+
+EXECUTE NAIVE BAYES
+- Prior (scalanlp.stats.distributions)
 -- Multinomial
 -- Binomial
 -- Train
-
+-- Alpha smoothing
 Xtra Credit
 - Stop words
 - Stem
 
-Evaluation
+EVALUATION
 - 10-fold cross validation
 -- Generate subsets of the data
 -- Run Naive Bayes and Score
@@ -23,6 +27,13 @@ Evaluation
 - F1 Score
 - AOC*?
 
+WRITEUP
+Tables
+- F1 Score
+- Term weights, how to improve
 
-Scala fix
+
+SCALA FIX
 http://stackoverflow.com/questions/336144/building-a-scala-app-with-maven-that-has-java-source-mixed-in
+
+Downloaded 0.4.1 scalala from site using
