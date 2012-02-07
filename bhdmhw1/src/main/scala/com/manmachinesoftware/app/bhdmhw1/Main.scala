@@ -55,13 +55,13 @@ object Main
         return dict.toMap
     }
 
-    def stopDoc( fields:imMap[String,Seq[String]],stopWords:Array[String]): imMap[String,Seq[String]] = 
+    def stopDoc( fields:imMap[String,Seq[String]],stopWords:Seq[String]): imMap[String,Seq[String]] = 
     {
         var dict:HashMap[String,Seq[String]] = HashMap[String,Seq[String]]()
         var words = ListBuffer[String]()
         for ( i <- 0 until (fields.get(featureBody).size)) {
             val ss = fields.get(featureBody).get(i)
-            if (!stopWords.contains(ss)) words += ss
+            if (stopWords.contains(ss) == false) { words += ss }
         }
         dict.put(featureBody,words)
         return dict.toMap
@@ -72,12 +72,13 @@ object Main
         var corpus = corp
         var stopWords:List[String] = List.fromArray(sW)
         //Map stem and stopwords onto corpus
-        if (useStemmer) corpus = {
-            corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stemDoc(doc.fields)))
-            stopWords = stopWords.map[String](stemmerRun.porterStem) //What is wrong with this map?
-            //stopWords = stopWords.map[String](stemmerRun.porterStem) //What is wrong with this map?
+        if (useStemmer) {
+            corpus = corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stemDoc(doc.fields)))
+            stopWords.map(stemmerRun.porterStem)
         }
-        //if (sW != null) corpus = corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stopDoc(doc.fields,sW)))
+        if (stopWords.size != 0) {
+            corpus = corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stopDoc(doc.fields,stopWords)))
+        }
         
 
 
