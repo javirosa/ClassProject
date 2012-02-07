@@ -66,7 +66,6 @@ object Main
             if (stopWords.contains(ss) == false) { words.append(ss) } 
         }
         dict.put(featureBody,words)
-        for (x <- words) println(x)
         return dict.toMap
     }
 
