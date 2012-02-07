@@ -37,37 +37,12 @@ object Main
     def main(args: Array[String]) = {
         var corpus = getData()
         runClassifier(corpus.toList,stopWords,true)
-        //Map stem and stopwords to corpus
 
         //Bernoulli bayes without stemming or stopwords
-
+        //Plot F1 scores
+        //Print distinguishing words
     }
 
-    def stemDoc( fields:imMap[String,Seq[String]]): imMap[String,Seq[String]] = 
-    {
-        var dict:HashMap[String,Seq[String]] = HashMap[String,Seq[String]]()
-        var words = ListBuffer[String]()
-        var terms:Seq[String] = fields.getOrElse(featureBody,null) 
-        for ( i <- 0 until terms.size) {
-            var ss = terms(i)
-            words.append(stemmerRun.porterStem(ss))
-        }
-        dict.put(featureBody,words)
-        return dict.toMap
-    }
-
-    def stopDoc( fields:imMap[String,Seq[String]],stopWords:Array[String]): imMap[String,Seq[String]] = 
-    {
-        var dict:HashMap[String,Seq[String]] = HashMap[String,Seq[String]]()
-        var words = ListBuffer[String]()
-        var terms:Seq[String] = fields.getOrElse(featureBody,null) 
-        for ( i <- 0 until terms.size) {
-            val ss = terms(i)
-            if (stopWords.contains(ss) == false) { words.append(ss) } 
-        }
-        dict.put(featureBody,words)
-        return dict.toMap
-    }
 
     def runClassifier(corp:List[LabeledDocument[Double,String]], sW:Array[String],useStemmer:Boolean ) = 
     {
@@ -113,11 +88,6 @@ object Main
             //Compute F1 scores
 
         }
-
-        //Plot F1 scores
-
-        //Print distinguishing words
-
     }
 
     def getData():ListBuffer[LabeledDocument[Double,String]] = 
@@ -158,6 +128,32 @@ object Main
         return string.split("\\s+").map((s:String) => s.trim)
     }
 
+    def stemDoc( fields:imMap[String,Seq[String]]): imMap[String,Seq[String]] = 
+    {
+        var dict:HashMap[String,Seq[String]] = HashMap[String,Seq[String]]()
+        var words = ListBuffer[String]()
+        var terms:Seq[String] = fields.getOrElse(featureBody,null) 
+        for ( i <- 0 until terms.size) {
+            var ss = terms(i)
+            words.append(stemmerRun.porterStem(ss))
+        }
+        dict.put(featureBody,words)
+        return dict.toMap
+    }
+
+    def stopDoc( fields:imMap[String,Seq[String]],stopWords:Array[String]): imMap[String,Seq[String]] = 
+    {
+        var dict:HashMap[String,Seq[String]] = HashMap[String,Seq[String]]()
+        var words = ListBuffer[String]()
+        var terms:Seq[String] = fields.getOrElse(featureBody,null) 
+        for ( i <- 0 until terms.size) {
+            val ss = terms(i)
+            if (stopWords.contains(ss) == false) { words.append(ss) } 
+        }
+        dict.put(featureBody,words)
+        return dict.toMap
+    }
+
     def encode(dict:Map[String,Double],wToIdx:Map[String,Int]):SparseVector = 
     {
         var vec = new SparseVector(dict.size)
@@ -175,7 +171,6 @@ object Main
         }
         return dict
     }
-
 }
 
 // vim: set ts=4 sw=4 et:
