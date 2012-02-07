@@ -26,6 +26,7 @@ WRITEUP
 Tables
 - F1 Score
 - Term weights, how to improve
+- Compare stem,stop,berniulli,multinomial,alpha F1 scores
 
 
 SCALA FIX

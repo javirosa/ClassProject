@@ -5,7 +5,7 @@ import java.io.File
 import io.Source
 import collection.immutable
 import collection.mutable.HashMap
-import collection.mutable.Map
+import collection.immutable.{Map => imMap}
 import collection.mutable.ListBuffer
 import scalala.tensor.counters.Counters.DefaultIntCounter
 import scalanlp.data.{LabeledDocument}
@@ -26,7 +26,6 @@ object Main
 
     //Parameters
     val useStopWords = mysql
-    val useStemmer = true
 
     var stopWords = new Array[String](0)
     if (useStopWords != null) {
@@ -35,35 +34,52 @@ object Main
         stopWordsSource.close()
     }
 
-    //Running data
-    var corpus = new ListBuffer[LabeledDocument[Double,String]]()
-    var counter = new DefaultIntCounter();
-
     def main(args: Array[String]) = {
-       getData()
-    }
-    //Method which takes the fneg and fpos sets and divides them into sets of size 10
-    // for each subset run the algorithm
+        var corpus = getData()
+        runClassifier(corpus.toList,stopWords,true)
+        //Map stem and stopwords to corpus
 
-    def runClassifier(corpus:List[LabeledDocument[Double,String]], sW:Array[String],useStemmer:Boolean ) = {
+        //Bernoulli bayes without stemming or stopwords
 
     }
-    def getData() = {
-        //Open resource directories for +ve and -ve
-        val fnegPath = new java.io.File(getClass().getResource("/polarityData/neg").getFile())
-        val fposPath = new java.io.File(getClass().getResource("/polarityData/pos").getFile())
-        val fneg = fnegPath.list()
-        val fpos = fposPath.list()
+
+    def stemDoc( fields:imMap[String,Seq[String]]): imMap[String,Seq[String]] = 
+    {
+        var dict:HashMap[String,Seq[String]] = HashMap[String,Seq[String]]()
+        var words = ListBuffer[String]()
+        for ( i <- 0 until (fields.get(featureBody).size)) {
+            var ss = fields(featureBody)(i)
+            words.append(stemmerRun.porterStem(ss))
+        }
+        dict.put(featureBody,words)
+        return dict.toMap
+    }
+
+    def stopDoc( fields:imMap[String,Seq[String]],stopWords:Array[String]): imMap[String,Seq[String]] = 
+    {
+        var dict:HashMap[String,Seq[String]] = HashMap[String,Seq[String]]()
+        var words = ListBuffer[String]()
+        for ( i <- 0 until (fields.get(featureBody).size)) {
+            val ss = fields.get(featureBody).get(i)
+            if (!stopWords.contains(ss)) words += ss
+        }
+        dict.put(featureBody,words)
+        return dict.toMap
+    }
+
+    def runClassifier(corp:List[LabeledDocument[Double,String]], sW:Array[String],useStemmer:Boolean ) = 
+    {
+        var corpus = corp
+        var stopWords:List[String] = List.fromArray(sW)
+        //Map stem and stopwords onto corpus
+        if (useStemmer) corpus = {
+            corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stemDoc(doc.fields)))
+            stopWords = stopWords.map[String](stemmerRun.porterStem) //What is wrong with this map?
+            //stopWords = stopWords.map[String](stemmerRun.porterStem) //What is wrong with this map?
+        }
+        //if (sW != null) corpus = corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stopDoc(doc.fields,sW)))
         
-        //Build corpus
-        for (review <- fneg) {
-            val seq = parseFile(new File(fnegPath,review),sW= stopWords, stem=useStemmer)
-            corpus += (new LabeledDocument(review,NEG,immutable.HashMap((featureBody,seq))))
-        }
-        for (review <- fpos) {
-            val seq = parseFile(new File(fposPath,review),sW = stopWords, stem=useStemmer)
-            corpus += (new LabeledDocument(review,POS,immutable.HashMap((featureBody,seq))))
-        }
+
 
         //Build dictionary and index
         var dict = new HashMap[String,Int]()//{ override def default(key:String) = 0}
@@ -100,27 +116,31 @@ object Main
 
         //Print distinguishing words
 
-        //Compare against a bernoulli bayes without stemming or stopwords
     }
 
-    def encode(dict:Map[String,Double],wToIdx:Map[String,Int]):SparseVector = {
-        var vec = new SparseVector(dict.size)
-        for (x:(String,Double) <- dict.toIndexedSeq) {
-            vec.update(wToIdx.get(x._1),x._2)    
+    def getData():ListBuffer[LabeledDocument[Double,String]] = 
+    {
+        var corpus = new ListBuffer[LabeledDocument[Double,String]]()
+        //Open resource directories for +ve and -ve
+        val fnegPath = new java.io.File(getClass().getResource("/polarityData/neg").getFile())
+        val fposPath = new java.io.File(getClass().getResource("/polarityData/pos").getFile())
+        val fneg = fnegPath.list()
+        val fpos = fposPath.list()
+        
+        //Build corpus
+        for (review <- fneg) {
+            val seq = parseFile(new File(fnegPath,review))
+            corpus += (new LabeledDocument(review,NEG,immutable.HashMap((featureBody,seq))))
         }
-        return vec
-    }
-
-    def decode(vec:SparseVector,idxToW:IndexedSeq[(String,Double)]):Map[String,Double] = {
-        var dict = new HashMap[String,Double]()
-        for (k <- vec.activeKeys) {
-            dict.put(idxToW(k)._1,vec(k))
+        for (review <- fpos) {
+            val seq = parseFile(new File(fposPath,review))
+            corpus += (new LabeledDocument(review,POS,immutable.HashMap((featureBody,seq))))
         }
-        return dict
+        return corpus
     }
 
-    def parseFile(f:File, sW:IndexedSeq[String] = null,stem:Boolean = false):Seq[String] = {
-        var stopWords = sW
+    def parseFile(f:File):Seq[String] = 
+    {
         val file = Source.fromFile(f)
         var string = file.mkString.toLowerCase
         file.close()
@@ -133,18 +153,25 @@ object Main
         string = string.replaceAll("'--+"," ") 
         string = string.replaceAll("'s|[\\p{Punct}^-]"," ") //remove possesives and punctuation
         string = string.replaceAll("\\s+","\n")
-        var text = string.split("\\s+").map((s:String) => s.trim)
-        
-        
-        //var text = SimpleEnglishTokenizer.apply()(string)
-        if (stem) {
-           text = text.map(stemmerRun.porterStem)
-           stopWords = stopWords.map(stemmerRun.porterStem)
+        return string.split("\\s+").map((s:String) => s.trim)
+    }
+
+    def encode(dict:Map[String,Double],wToIdx:Map[String,Int]):SparseVector = 
+    {
+        var vec = new SparseVector(dict.size)
+        for (x:(String,Double) <- dict.toIndexedSeq) {
+            vec.update(wToIdx.get(x._1),x._2)    
         }
-        if (stopWords != null) {
-            text = text.filterNot((s:String) => stopWords.contains(s))
+        return vec
+    }
+
+    def decode(vec:SparseVector,idxToW:IndexedSeq[(String,Double)]):HashMap[String,Double] = 
+    {
+        var dict = new HashMap[String,Double]()
+        for (k <- vec.activeKeys) {
+            dict.put(idxToW(k)._1,vec(k))
         }
-        return text.toIndexedSeq //ArrayBuffer
+        return dict
     }
 
 }
