@@ -47,8 +47,9 @@ object Main
     {
         var dict:HashMap[String,Seq[String]] = HashMap[String,Seq[String]]()
         var words = ListBuffer[String]()
-        for ( i <- 0 until (fields.get(featureBody).size)) {
-            var ss = fields(featureBody)(i)
+        var terms:Seq[String] = fields.getOrElse(featureBody,null) 
+        for ( i <- 0 until terms.size) {
+            var ss = terms(i)
             words.append(stemmerRun.porterStem(ss))
         }
         dict.put(featureBody,words)
@@ -59,12 +60,13 @@ object Main
     {
         var dict:HashMap[String,Seq[String]] = HashMap[String,Seq[String]]()
         var words = ListBuffer[String]()
-        for ( i <- 0 until (fields.get(featureBody).size)) {
-            val ss = fields.get(featureBody).get(i)
-            if (stopWords.contains(ss) == false) { words.append(ss);println("dnc:" + ss) } 
-            else println("contains:" + ss)
+        var terms:Seq[String] = fields.getOrElse(featureBody,null) 
+        for ( i <- 0 until terms.size) {
+            val ss = terms(i)
+            if (stopWords.contains(ss) == false) { words.append(ss) } 
         }
         dict.put(featureBody,words)
+        for (x <- words) println(x)
         return dict.toMap
     }
 
@@ -78,14 +80,13 @@ object Main
             stopWords.map(stemmerRun.porterStem)
         }
         if (stopWords.size != 0) {
-            //corpus = corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stopDoc(doc.fields,stopWords)))
+            corpus = corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stopDoc(doc.fields,stopWords)))
         }
 
         
         //Build dictionary and index
         var dict = new HashMap[String,Int]()//{ override def default(key:String) = 0}
         for (doc:LabeledDocument[Double,String] <- corpus.toIndexedSeq) {
-            println(doc.id)
             for ( i <- 0 until (doc.fields.get(featureBody).size)) {
                 val ss = doc.fields.get(featureBody).get(i)
                 dict.put(ss,dict.getOrElse(ss,0)+1)
