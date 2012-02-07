@@ -27,10 +27,12 @@
               <id>Main</id>
               <mainClass>com.manmachinesoftware.app.bhdmhw1.Main</mainClass>
               <args>
-
               </args>
           </launcher>
         </launchers>
+        <args>
+          <arg>-g:vars</arg>
+        </args>
         </configuration>
       </plugin>
       <plugin>

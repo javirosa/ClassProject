@@ -25,7 +25,7 @@ object Main
     var xFold = 10
 
     //Parameters
-    val useStopWords = mysql
+    val useStopWords = google
 
     var stopWords = new Array[String](0)
     if (useStopWords != null) {
@@ -55,13 +55,14 @@ object Main
         return dict.toMap
     }
 
-    def stopDoc( fields:imMap[String,Seq[String]],stopWords:Seq[String]): imMap[String,Seq[String]] = 
+    def stopDoc( fields:imMap[String,Seq[String]],stopWords:Array[String]): imMap[String,Seq[String]] = 
     {
         var dict:HashMap[String,Seq[String]] = HashMap[String,Seq[String]]()
         var words = ListBuffer[String]()
         for ( i <- 0 until (fields.get(featureBody).size)) {
             val ss = fields.get(featureBody).get(i)
-            if (stopWords.contains(ss) == false) { words += ss }
+            if (stopWords.contains(ss) == false) { words.append(ss);println("dnc:" + ss) } 
+            else println("contains:" + ss)
         }
         dict.put(featureBody,words)
         return dict.toMap
@@ -70,21 +71,21 @@ object Main
     def runClassifier(corp:List[LabeledDocument[Double,String]], sW:Array[String],useStemmer:Boolean ) = 
     {
         var corpus = corp
-        var stopWords:List[String] = List.fromArray(sW)
+        var stopWords = sW
         //Map stem and stopwords onto corpus
         if (useStemmer) {
             corpus = corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stemDoc(doc.fields)))
             stopWords.map(stemmerRun.porterStem)
         }
         if (stopWords.size != 0) {
-            corpus = corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stopDoc(doc.fields,stopWords)))
+            //corpus = corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stopDoc(doc.fields,stopWords)))
         }
+
         
-
-
         //Build dictionary and index
         var dict = new HashMap[String,Int]()//{ override def default(key:String) = 0}
         for (doc:LabeledDocument[Double,String] <- corpus.toIndexedSeq) {
+            println(doc.id)
             for ( i <- 0 until (doc.fields.get(featureBody).size)) {
                 val ss = doc.fields.get(featureBody).get(i)
                 dict.put(ss,dict.getOrElse(ss,0)+1)
