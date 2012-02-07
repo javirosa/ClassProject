@@ -333,7 +333,7 @@ class Stemmer
 }
 
 
-object runit
+object stemmerRun
 {
 
   def main(args: Array[String]) =
@@ -364,6 +364,21 @@ object runit
       println(stemmer.b )
     }
   }
+
+  def porterStem(s:String):String = {  
+     var stemmer = new Stemmer() 
+     stemmer.add(s.trim()) 
+     if (stemmer.b.length >2 ) { 
+       stemmer.step1 
+       stemmer.step2 
+       stemmer.step3 
+       stemmer.step4 
+       stemmer.step5a 
+       stemmer.step5b 
+     } 
+     return stemmer.b 
+   } 
+
 }
 
 

@@ -1,13 +1,8 @@
 PARSE DATA
-- Read in data
+- Generate dictionary
 - Generate Subset of data
-- Tokenize
 - Index
 - Vectorize
-
-Convert to LabeledDocument then this can be dumped into a Naive Bayes Classifier
-
-http://www.scalanlp.org/docs/core/data/#scalanlp.data.Example
 
 EXECUTE NAIVE BAYES
 - Prior (scalanlp.stats.distributions)
@@ -15,14 +10,14 @@ EXECUTE NAIVE BAYES
 -- Binomial
 -- Train
 -- Alpha smoothing
-Xtra Credit
-- Stop words
-- Stem
 
 EVALUATION
 - 10-fold cross validation
 -- Generate subsets of the data
 -- Run Naive Bayes and Score
+- Look at interesting keywords, how do they change with subset
+- plot word counts and F1 measures
+- %80 recall as a goal
 
 - F1 Score
 - AOC*?
@@ -36,4 +31,4 @@ Tables
 SCALA FIX
 http://stackoverflow.com/questions/336144/building-a-scala-app-with-maven-that-has-java-source-mixed-in
 
-Downloaded 0.4.1 scalala from site using
+Downloaded 0.4.1 scalala from site and integrated into project using maven install command
