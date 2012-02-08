@@ -4,9 +4,9 @@ import java.util.ArrayList
 import java.io.File
 import io.Source
 import collection.immutable
-import collection.mutable.HashMap
+import collection.mutable
+import collection.mutable.{HashMap,ListBuffer}
 import collection.immutable.{Map => imMap}
-import collection.mutable.ListBuffer
 import scalala.tensor.counters.Counters.DefaultIntCounter
 import scalanlp.data.{LabeledDocument}
 import scalala.tensor.sparse.SparseVector
@@ -34,18 +34,57 @@ object Main
         stopWordsSource.close()
     }
 
-    def main(args: Array[String]) = {
-        var corpus = getData()
-        runClassifier(corpus.toList,stopWords,true)
+    // Test conditions (bernoulli),stem,stop,smoothing = 8Xcont different conditions
+    def main(args: Array[String]) = 
+    {
+        var corpus = Random.shuffle(getData())
 
         //Bernoulli bayes without stemming or stopwords
+        var (corpOrig,dictOrig,binDictOrig,idxToWOrig,wToIdxOrig) = mapData(corpus.toList,stopWords,true)
+        //Generate sets from the already Ramdomly ordered corpus
+        val sets = corpOrig.sliding(corpus.size/xFold)
+
+        //For each set train on everything else, but that set
+        for (t <- 0 until sets.length) {
+            //Train against the tail
+
+
+        
+            //Run the query on the head
+            query()//Vec for data and two vecs one for each class?
+            f1score()
+        }
+
+        //Return results for each query
+
+        //Compute F1 scores
         //Plot F1 scores
         //Print distinguishing words
+
+
+        //Multinomial Bayes with stemming
     }
 
-
-    def runClassifier(corp:List[LabeledDocument[Double,String]], sW:Array[String],useStemmer:Boolean ) = 
+    def runBayes(data:Seq[Seq[LabeledDocument[Double,String]]],alpha:Double = 1,bin:Boolean = true) = 
     {
+        //Convert to vectors
+        //Do bernouli or not
+        //Do bayes
+        //Run on data set
+        //Return relabeled documents,two vocabulary vectors
+        
+    }
+
+    def f1score() = 
+    {
+        //Given set of pos,neg and actual set
+        //Count real by ID and then return score on query
+    }
+
+    def mapData(corp:List[LabeledDocument[Double,String]], sW:Array[String],useStemmer:Boolean ):
+    (List[LabeledDocument[Double,String]],HashMap[String,Int],HashMap[String,Int],Seq[(String,Int)],HashMap[String,Int])= 
+    {
+
         var corpus = corp
         var stopWords = sW
         //Map stem and stopwords onto corpus
@@ -59,11 +98,13 @@ object Main
 
         
         //Build dictionary and index
-        var dict = new HashMap[String,Int]()//{ override def default(key:String) = 0}
+        var dict = new HashMap[String,Int]()
+        var binDict = new HashMap[String,Int]()
         for (doc:LabeledDocument[Double,String] <- corpus.toIndexedSeq) {
             for ( i <- 0 until (doc.fields.get(featureBody).size)) {
                 val ss = doc.fields.get(featureBody).get(i)
                 dict.put(ss,dict.getOrElse(ss,0)+1)
+                binDict.put(ss,1)
             }
         }
         
@@ -75,19 +116,26 @@ object Main
             wToIdx.put(x._1,i)
             i = i + 1
         }
+        return (corpus,dict,binDict,idxToW,wToIdx)
+    }
+    
+    def count(doc:LabeledDocument[Double,String]):mutable.Map[String,Int] = 
+    {   
+        val words:Seq[String] = doc.fields.getOrElse(featureBody,null)
+        val dict = mutable.Map[String,Int]()
+        words.map((s:String) => dict.put(s,dict.getOrElse[Int](s,0) +1))
+        return dict
+    }
 
-        //Generate Random sets from the corpus
-        val sets = List(Random.shuffle(corpus).sliding(corpus.size/xFold))
-
-        //For each set train on everything else, but that set
-        for (t <- 0 until sets.length) {
-            //Train against the rest
-
-            //Run the query
-
-            //Compute F1 scores
-
+    def addDict(a:mutable.Map[String,Int],b:mutable.Map[String,Int]):mutable.Map[String,Int] = {
+        var c = new HashMap[String,Int]()
+        for ( k <- a.keys ) {
+            c.put(k,a.getOrElse(k,0)) 
         }
+        for ( k <- b.keys ) {
+            c.put(k,b.getOrElse(k,0)) 
+        }
+        return c
     }
 
     def getData():ListBuffer[LabeledDocument[Double,String]] = 
@@ -154,11 +202,15 @@ object Main
         return dict.toMap
     }
 
-    def encode(dict:Map[String,Double],wToIdx:Map[String,Int]):SparseVector = 
+    def encode(dict:Map[String,Double],wToIdx:Map[String,Int],bit: Boolean = false):SparseVector = 
     {
         var vec = new SparseVector(dict.size)
         for (x:(String,Double) <- dict.toIndexedSeq) {
-            vec.update(wToIdx.get(x._1),x._2)    
+            var count = x._2
+            if (bit && count>0) {
+                count = 1
+            }   
+            vec.update(wToIdx.get(x._1),count)    
         }
         return vec
     }
