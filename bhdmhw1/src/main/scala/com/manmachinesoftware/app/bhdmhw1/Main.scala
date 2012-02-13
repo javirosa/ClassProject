@@ -23,7 +23,6 @@ object Main
     val mysql = new java.io.File(getClass().getResource("/stopwords/mysqlStop.txt").getFile())
     val ranknlAll = new java.io.File(getClass().getResource("/stopwords/ranknlAllStop.txt").getFile())
     val ranknl = new java.io.File(getClass().getResource("/stopwords/ranknlStop.txt").getFile())
-    var xFold = 10
 
 
     var swGoogle = readSW(google).toArray
@@ -32,87 +31,97 @@ object Main
     var swRanknl = readSW(ranknl).toArray
     var swNone = Array[String]()
 
-    // Test conditions (bernoulli),stem,stop,smoothing = 8Xcont different conditions
+
+    //TEST CONDITIONS
+    var xFold = 10
+    util.Random.setSeed(0)
+    val swords = swRanknlAll
+    val stem = true
+    val bernoulli = true
+    val alphaSmoothing = 1
+
+
     def main(args: Array[String]) = 
     {
-        var corpus = Random.shuffle(getData())//.slice(0,100)
+        //Randomize the data inputs for later separation into query and training sets
+        var corpus = Random.shuffle(getData())
 
         //Bernoulli bayes without stemming or stopwords
-        var (corpOrig,dictOrig,binDictOrig,idxToWOrig,wToIdxOrig) = mapData(corpus.toList,swGoogle,true)
+        var (corpOrig,dictOrig,binDictOrig,idxToWOrig,wToIdxOrig) = mapData(corpus.toList,swords,stem)
         //Generate sets from the already Ramdomly ordered corpus
         val sets = corpOrig.grouped(corpOrig.size/xFold).toSeq
 
         //For each set train on everything else, but that set
-
         val idxSize = wToIdxOrig.size
-        val alphaSmoothing = .5
+        for (i <- 0 until sets.size)
+        {
+            val train = (sets.splitAt(i)._1 ++ sets.splitAt(i+1)._2).flatten
+            val classCorpus = train.groupBy((doc) => doc.label)
 
-        //TRAIN against the tail
-        val bernoulli = true
-        val query = sets.head
-        val train = sets.tail.flatten
-        val classCorpus = train.groupBy((doc) => doc.label)
-        //Map documents to vectors
-        val booleanVecs = classCorpus.mapValues(
-        (seq) => seq.map(
-            (doc) => encode(wToIdxOrig.toMap,bernouli,count(doc).toMap)
+
+            //Map documents to vectors
+            val booleanVecs = classCorpus.mapValues(
+            (seq) => seq.map(
+                (doc) => encode(wToIdxOrig.toMap,bernoulli,count(doc).toMap)
+                )
             )
-        )
-        var booleanClassProbs = HashMap[Int,SparseVector](NEG -> new SparseVector(idxSize), POS -> new SparseVector(idxSize))
-        booleanClassProbs.foreach( 
-            (kv) => { 
-                val lbl = kv._1
-                val vec = kv._2
-                val classSize = booleanVecs.getOrElse(lbl,null).size
-                val prior = classSize.toDouble/(train.size)
-                for (i <- 0 until idxSize) vec.update(i, 0)
-                booleanVecs.getOrElse(lbl,null).foreach( (v) => vec += v)
-                val totOccurances = classSize//vec.reduce((x,y) => x+y)
-                for (i <- 0 until idxSize) vec.update(i, math.log(((alphaSmoothing+vec(i))*prior)/(totOccurances+alphaSmoothing*idxSize)))
-            }
-        )
-
-        //For each vector in query apply to each class vector 
-        val qClass = query.groupBy( doc => doc.label)
-        var qClassVecs = qClass.mapValues(
-            seq => seq.map(count).map(
-                x => {
-                    //Classify
-                    val vec = encode(wToIdxOrig.toMap,bernoulli,x.toMap)
-                    val pvec = booleanClassProbs.getOrElse(POS,null).dot(vec)
-                    val nvec = booleanClassProbs.getOrElse(NEG,null).dot(vec)
-                    if (pvec >= nvec) POS else NEG
+            var termClassProbs = HashMap[Int,SparseVector](NEG -> new SparseVector(idxSize), POS -> new SparseVector(idxSize))
+            termClassProbs.foreach( 
+                (kv) => { 
+                    val lbl = kv._1; val vec = kv._2;
+                    val classSize = booleanVecs.getOrElse(lbl,null).size
+                    val prior = classSize.toDouble/(train.size)
+                    for (i <- 0 until idxSize) vec.update(i, 0)
+                    booleanVecs.getOrElse(lbl,null).foreach( (v) => vec += v)
+                    val totOccurances:Double = if(bernoulli) classSize.toDouble else vec.reduceLeft[(Int,Double)]((x,b) => (0,x._2 + b._2))._2
+                    for (i <- 0 until idxSize) vec.update(i, math.log(((alphaSmoothing+vec(i))*prior)/(totOccurances+alphaSmoothing*idxSize))) 
                 }
-            ).groupBy(x => x)
-        )
-        val tp = qClassVecs.getOrElse(POS,null).getOrElse(POS,Seq()).size 
-        val fn = qClassVecs.getOrElse(POS,null).getOrElse(NEG,Seq()).size 
-        val fp = qClassVecs.getOrElse(NEG,null).getOrElse(POS,Seq()).size 
+            )
 
-        println("tp:%d fn:%d fp:%d".format(tp,fn,fp))
+            //For each vector in query apply to each class vector 
+            val query = sets(i)
+            val qClass = query.groupBy( doc => doc.label)
+            var qClassVecs = qClass.mapValues(
+                seq => seq.map(count).map(
+                    x => {
+                        //Classify
+                        val vec = encode(wToIdxOrig.toMap,bernoulli,x.toMap)
+                        val pvec = termClassProbs.getOrElse(POS,null).dot(vec)
+                        val nvec = termClassProbs.getOrElse(NEG,null).dot(vec)
+                        if (pvec >= nvec) POS else NEG
+                    }
+                ).groupBy(x => x)
+            )
 
-        //Get precision and recall:  tp/(tp+fp), tp/(tp + fn)
-        //Plot F1 scores
-        //Print distinguishing words
+            //Compute F1 scores
+            val tp = qClassVecs.getOrElse(POS,null).getOrElse(POS,Seq()).size 
+            val tn = qClassVecs.getOrElse(NEG,null).getOrElse(NEG,Seq()).size 
+            val fn = qClassVecs.getOrElse(POS,null).getOrElse(NEG,Seq()).size 
+            val fp = qClassVecs.getOrElse(NEG,null).getOrElse(POS,Seq()).size 
+
+            println("#f1:%f tp:%d fn:%d fp:%d tn:%d".format(f1score(tp,fn,fp),tp,fn,fp,tn))
+            println("%f,%d,%d,%d,%d".format(f1score(tp,fn,fp),tp,fn,fp,tn))
+
+            //Print distinguishing words
+            for (x <-LABELS) {
+                println("Class:%d".format(x))
+                decode(idxToWOrig,termClassProbs.getOrElse(x,null)).toList.sortWith((x,y) => x._2 >= y._2).take(10).
+                            foreach(t => print("%s:%2.3f ".format(t._1,t._2)))
+                println();
+            }
+        }
     }
 
-   /* def runBayes(data:Seq[Seq[LabeledDocument[Double,String]]],alpha:Double = 1,bin:Boolean = true) = 
+    def f1score(tp:Int,fn:Int,fp:Int):Double = 
     {
-        //Do bernouli or not
-        //Do bayes
-        //Run on data set
-        //Return relabeled documents,two vocabulary vectors
-        
-    }*/
-
-    def f1score() = 
-    {
-        //Given set of pos,neg and actual set
-        //Count real by ID and then return score on query
+        //Get precision and recall:  tp/(tp+fp), tp/(tp + fn)
+        val recall = tp.toDouble/(tp+fn)
+        val relevance = tp.toDouble/(tp+fp)
+        return 2*recall*relevance/(recall + relevance)
     }
 
     def mapData(corp:List[LabeledDocument[Double,String]], sW:Array[String],useStemmer:Boolean ):
-    (List[LabeledDocument[Double,String]],HashMap[String,Int],HashMap[String,Int],Seq[(String,Int)],HashMap[String,Int])= 
+    (List[LabeledDocument[Double,String]],HashMap[String,Double],HashMap[String,Int],IndexedSeq[(String,Double)],HashMap[String,Int]) = 
     {
 
         var corpus = corp
@@ -128,12 +137,12 @@ object Main
 
         
         //Build dictionary and index
-        var dict = new HashMap[String,Int]()
+        var dict = new HashMap[String,Double]()
         var binDict = new HashMap[String,Int]()
         for (doc:LabeledDocument[Double,String] <- corpus.toIndexedSeq) {
             for ( i <- 0 until (doc.fields.get(featureBody).size)) {
                 val ss = doc.fields.get(featureBody).get(i)
-                dict.put(ss,dict.getOrElse(ss,0)+1)
+                dict.put(ss,dict.getOrElse(ss,0.0)+1.0)
                 binDict.put(ss,1)
             }
         }

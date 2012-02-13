@@ -1,15 +1,4 @@
-PARSE DATA
-- Generate dictionary
-- Generate Subset of data
-- Index
-- Vectorize
-
-EXECUTE NAIVE BAYES
-- Prior (scalanlp.stats.distributions)
 -- Multinomial
--- Binomial
--- Train
--- Alpha smoothing
 
 EVALUATION
 - 10-fold cross validation
@@ -20,11 +9,9 @@ EVALUATION
 - %80 recall as a goal
 
 - F1 Score
-- AOC*?
 
 WRITEUP
 Tables
-- F1 Score
 - Term weights, how to improve
 - Compare stem,stop,berniulli,multinomial,alpha F1 scores
 
