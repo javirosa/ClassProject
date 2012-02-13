@@ -17,6 +17,7 @@ object Main
 {
     val NEG = -1
     val POS = 1
+    val LABELS = List(NEG,POS)
     val featureBody = "reviewBody"
     val google = new java.io.File(getClass().getResource("/stopwords/googleStop.txt").getFile())
     val mysql = new java.io.File(getClass().getResource("/stopwords/mysqlStop.txt").getFile())
@@ -24,56 +25,85 @@ object Main
     val ranknl = new java.io.File(getClass().getResource("/stopwords/ranknlStop.txt").getFile())
     var xFold = 10
 
-    //Parameters
-    val useStopWords = google
 
-    var stopWords = new Array[String](0)
-    if (useStopWords != null) {
-        val stopWordsSource = Source.fromFile(useStopWords)
-        stopWords = stopWordsSource.mkString.split("\\s+")
-        stopWordsSource.close()
-    }
+    var swGoogle = readSW(google).toArray
+    var swMysql =  readSW(mysql).toArray
+    var swRanknlAll = readSW(ranknlAll).toArray
+    var swRanknl = readSW(ranknl).toArray
+    var swNone = Array[String]()
 
     // Test conditions (bernoulli),stem,stop,smoothing = 8Xcont different conditions
     def main(args: Array[String]) = 
     {
-        var corpus = Random.shuffle(getData())
+        var corpus = Random.shuffle(getData())//.slice(0,100)
 
         //Bernoulli bayes without stemming or stopwords
-        var (corpOrig,dictOrig,binDictOrig,idxToWOrig,wToIdxOrig) = mapData(corpus.toList,stopWords,true)
+        var (corpOrig,dictOrig,binDictOrig,idxToWOrig,wToIdxOrig) = mapData(corpus.toList,swGoogle,true)
         //Generate sets from the already Ramdomly ordered corpus
-        val sets = corpOrig.sliding(corpus.size/xFold)
+        val sets = corpOrig.grouped(corpOrig.size/xFold).toSeq
 
         //For each set train on everything else, but that set
-        for (t <- 0 until sets.length) {
-            //Train against the tail
 
+        val idxSize = wToIdxOrig.size
+        val alphaSmoothing = .5
 
-        
-            //Run the query on the head
-            query()//Vec for data and two vecs one for each class?
-            f1score()
-        }
+        //TRAIN against the tail
+        val bernoulli = true
+        val query = sets.head
+        val train = sets.tail.flatten
+        val classCorpus = train.groupBy((doc) => doc.label)
+        //Map documents to vectors
+        val booleanVecs = classCorpus.mapValues(
+        (seq) => seq.map(
+            (doc) => encode(wToIdxOrig.toMap,bernouli,count(doc).toMap)
+            )
+        )
+        var booleanClassProbs = HashMap[Int,SparseVector](NEG -> new SparseVector(idxSize), POS -> new SparseVector(idxSize))
+        booleanClassProbs.foreach( 
+            (kv) => { 
+                val lbl = kv._1
+                val vec = kv._2
+                val classSize = booleanVecs.getOrElse(lbl,null).size
+                val prior = classSize.toDouble/(train.size)
+                for (i <- 0 until idxSize) vec.update(i, 0)
+                booleanVecs.getOrElse(lbl,null).foreach( (v) => vec += v)
+                val totOccurances = classSize//vec.reduce((x,y) => x+y)
+                for (i <- 0 until idxSize) vec.update(i, math.log(((alphaSmoothing+vec(i))*prior)/(totOccurances+alphaSmoothing*idxSize)))
+            }
+        )
 
-        //Return results for each query
+        //For each vector in query apply to each class vector 
+        val qClass = query.groupBy( doc => doc.label)
+        var qClassVecs = qClass.mapValues(
+            seq => seq.map(count).map(
+                x => {
+                    //Classify
+                    val vec = encode(wToIdxOrig.toMap,bernoulli,x.toMap)
+                    val pvec = booleanClassProbs.getOrElse(POS,null).dot(vec)
+                    val nvec = booleanClassProbs.getOrElse(NEG,null).dot(vec)
+                    if (pvec >= nvec) POS else NEG
+                }
+            ).groupBy(x => x)
+        )
+        val tp = qClassVecs.getOrElse(POS,null).getOrElse(POS,Seq()).size 
+        val fn = qClassVecs.getOrElse(POS,null).getOrElse(NEG,Seq()).size 
+        val fp = qClassVecs.getOrElse(NEG,null).getOrElse(POS,Seq()).size 
 
-        //Compute F1 scores
+        println("tp:%d fn:%d fp:%d".format(tp,fn,fp))
+
+        //Get precision and recall:  tp/(tp+fp), tp/(tp + fn)
         //Plot F1 scores
         //Print distinguishing words
-
-
-        //Multinomial Bayes with stemming
     }
 
-    def runBayes(data:Seq[Seq[LabeledDocument[Double,String]]],alpha:Double = 1,bin:Boolean = true) = 
+   /* def runBayes(data:Seq[Seq[LabeledDocument[Double,String]]],alpha:Double = 1,bin:Boolean = true) = 
     {
-        //Convert to vectors
         //Do bernouli or not
         //Do bayes
         //Run on data set
         //Return relabeled documents,two vocabulary vectors
         
-    }
+    }*/
 
     def f1score() = 
     {
@@ -90,7 +120,7 @@ object Main
         //Map stem and stopwords onto corpus
         if (useStemmer) {
             corpus = corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stemDoc(doc.fields)))
-            stopWords.map(stemmerRun.porterStem)
+            stopWords = stopWords.map(stemmerRun.porterStem)
         }
         if (stopWords.size != 0) {
             corpus = corpus.map( (doc) => new LabeledDocument[Double,String](doc.id,doc.label,stopDoc(doc.fields,stopWords)))
@@ -202,10 +232,11 @@ object Main
         return dict.toMap
     }
 
-    def encode(dict:Map[String,Double],wToIdx:Map[String,Int],bit: Boolean = false):SparseVector = 
+    def encode(wToIdx:Map[String,Int],bit: Boolean = false,docDict:Map[String,Int]):SparseVector = 
     {
-        var vec = new SparseVector(dict.size)
-        for (x:(String,Double) <- dict.toIndexedSeq) {
+        var vec = new SparseVector(wToIdx.size)
+        for (i <- 0 until vec.size) vec.update(i,0)
+        for (x:(String,Int) <- docDict.toIndexedSeq) {
             var count = x._2
             if (bit && count>0) {
                 count = 1
@@ -215,7 +246,7 @@ object Main
         return vec
     }
 
-    def decode(vec:SparseVector,idxToW:IndexedSeq[(String,Double)]):HashMap[String,Double] = 
+    def decode(idxToW:IndexedSeq[(String,Double)],vec:SparseVector):HashMap[String,Double] = 
     {
         var dict = new HashMap[String,Double]()
         for (k <- vec.activeKeys) {
@@ -223,6 +254,14 @@ object Main
         }
         return dict
     }
+
+    def readSW(sourceFile:java.io.File):Seq[String] = {
+        val stopWordsSource = Source.fromFile(sourceFile)
+        val stopWords = stopWordsSource.mkString.split("\\s+")
+        stopWordsSource.close()
+        return stopWords
+    }
+
 }
 
 // vim: set ts=4 sw=4 et:
