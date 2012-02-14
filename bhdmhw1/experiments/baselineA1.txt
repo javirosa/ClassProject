@@ -1,0 +1,541 @@
+[INFO] 
+NOTE: Maven is executing in offline mode. Any artifacts not already in your local
+repository will be inaccessible.
+
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building bhdmhw1
+[INFO]    task-segment: [scala:compile, scala:run]
+[INFO] ------------------------------------------------------------------------
+[INFO] [scala:compile {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] includes = [**/*.scala,**/*.java,]
+[INFO] excludes = []
+[INFO] /home/javirosa/projects/bhdm/bhdmhw1/src/main/scala:-1: info: compiling
+[INFO] Compiling 2 source files to /home/javirosa/projects/bhdm/bhdmhw1/target/classes at 1329202031194
+[WARNING] warning: there were deprecation warnings; re-run with -deprecation for details
+[WARNING] one warning found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 11 s
+[INFO] Preparing scala:run
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2005 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/javirosa/projects/bhdm/bhdmhw1/src/test/resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [scala:run {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] launcher 'Main' selected => com.manmachinesoftware.app.bhdmhw1.Main
+#SCORE f1:0.681159 tp:94 fn:0 fp:88 tn:18
+0.681159,94,0,88,18
+#Word Rankings
+Class:-1| 
+the:-0.762 
+and:-0.763 
+of:-0.763 
+to:-0.764 
+is:-0.764 
+a:-0.765 
+in:-0.765 
+it:-0.782 
+that:-0.785 
+with:-0.794 
+
+Class:1| 
+the:-0.748 
+a:-0.748 
+of:-0.748 
+to:-0.748 
+and:-0.749 
+is:-0.749 
+in:-0.750 
+it:-0.759 
+that:-0.763 
+with:-0.774 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:4.263 
+roberto:3.933 
+weighed:-3.931 
+vikings:-3.713 
+errol:3.435 
+fritz:3.435 
+pollock:3.045 
+renown:3.045 
+trailing:3.045 
+stendhal:3.045 
+coinciding:-3.044 
+disconnect:-3.044 
+ahh:-3.044 
+salaries:-3.044 
+mulholland:-3.044 
+alexandre:-3.044 
+phew:-3.044 
+118:2.399 
+curdled:2.399 
+kadosh:2.399 
+
+
+#SCORE f1:0.701493 tp:94 fn:5 fp:75 tn:26
+0.701493,94,5,75,26
+#Word Rankings
+Class:-1| 
+the:-0.757 
+and:-0.757 
+is:-0.757 
+of:-0.758 
+to:-0.758 
+a:-0.759 
+in:-0.759 
+that:-0.774 
+it:-0.776 
+with:-0.789 
+
+Class:1| 
+the:-0.754 
+a:-0.754 
+of:-0.754 
+and:-0.755 
+in:-0.755 
+to:-0.755 
+is:-0.756 
+it:-0.763 
+that:-0.769 
+with:-0.778 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:4.263 
+roberto:4.111 
+weighed:-3.932 
+vikings:-3.713 
+fritz:3.434 
+trailing:3.434 
+salaries:-3.434 
+pollock:3.045 
+curdled:3.045 
+errol:3.045 
+labelling:3.045 
+renown:3.045 
+stendhal:3.045 
+humanities:-3.044 
+disconnect:-3.044 
+ahh:-3.044 
+apparantly:-3.044 
+mulholland:-3.044 
+alexandre:-3.044 
+confucius:-3.044 
+
+
+#SCORE f1:0.659420 tp:91 fn:6 fp:88 tn:15
+0.659420,91,6,88,15
+#Word Rankings
+Class:-1| 
+the:-0.760 
+and:-0.760 
+of:-0.761 
+to:-0.761 
+is:-0.761 
+in:-0.762 
+a:-0.763 
+that:-0.780 
+it:-0.783 
+not:-0.789 
+
+Class:1| 
+the:-0.751 
+a:-0.751 
+of:-0.751 
+and:-0.752 
+to:-0.752 
+in:-0.754 
+is:-0.754 
+it:-0.761 
+that:-0.766 
+with:-0.773 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:4.395 
+roberto:4.111 
+devotees:3.714 
+wyatt:-3.713 
+vikings:-3.713 
+weighed:-3.713 
+errol:3.434 
+fritz:3.434 
+trailing:3.434 
+ahh:-3.434 
+salaries:-3.434 
+alexandre:-3.434 
+pollock:3.045 
+curdled:3.045 
+labelling:3.045 
+stendhal:3.045 
+coinciding:-3.044 
+humanities:-3.044 
+disconnect:-3.044 
+tri:-3.044 
+
+
+#SCORE f1:0.756098 tp:93 fn:11 fp:49 tn:47
+0.756098,93,11,49,47
+#Word Rankings
+Class:-1| 
+the:-0.751 
+and:-0.751 
+of:-0.752 
+to:-0.752 
+is:-0.752 
+a:-0.755 
+in:-0.755 
+it:-0.773 
+that:-0.773 
+with:-0.783 
+
+Class:1| 
+the:-0.760 
+and:-0.760 
+a:-0.760 
+of:-0.760 
+to:-0.761 
+in:-0.762 
+is:-0.762 
+it:-0.767 
+that:-0.776 
+with:-0.784 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:4.262 
+roberto:4.110 
+vikings:-3.714 
+weighed:-3.714 
+krippendorf:-3.435 
+ahh:-3.435 
+salaries:-3.435 
+alexandre:-3.435 
+errol:3.433 
+retrospective:3.433 
+fritz:3.433 
+humanities:-3.045 
+apparantly:-3.045 
+confucius:-3.045 
+curdled:3.044 
+labelling:3.044 
+renown:3.044 
+trailing:3.044 
+stendhal:3.044 
+ugh:-2.551 
+
+
+#SCORE f1:0.684015 tp:92 fn:0 fp:85 tn:23
+0.684015,92,0,85,23
+#Word Rankings
+Class:-1| 
+the:-0.765 
+and:-0.765 
+to:-0.765 
+of:-0.767 
+is:-0.767 
+in:-0.768 
+a:-0.769 
+that:-0.786 
+it:-0.788 
+with:-0.795 
+
+Class:1| 
+the:-0.745 
+a:-0.745 
+of:-0.745 
+and:-0.747 
+to:-0.747 
+is:-0.747 
+in:-0.748 
+it:-0.757 
+that:-0.763 
+with:-0.769 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:4.264 
+roberto:3.933 
+weighed:-3.931 
+nosferatu:3.715 
+errol:3.435 
+trailing:3.435 
+ahh:-3.433 
+vikings:-3.433 
+salaries:-3.433 
+alexandre:-3.433 
+pollock:3.046 
+curdled:3.046 
+labelling:3.046 
+renown:3.046 
+fritz:3.046 
+stendhal:3.046 
+coinciding:-3.043 
+humanities:-3.043 
+disconnect:-3.043 
+apparantly:-3.043 
+
+
+#SCORE f1:0.694340 tp:92 fn:6 fp:75 tn:27
+0.694340,92,6,75,27
+#Word Rankings
+Class:-1| 
+and:-0.757 
+the:-0.758 
+to:-0.758 
+of:-0.759 
+is:-0.759 
+a:-0.761 
+in:-0.762 
+that:-0.781 
+it:-0.782 
+not:-0.789 
+
+Class:1| 
+the:-0.753 
+a:-0.753 
+of:-0.753 
+and:-0.754 
+to:-0.754 
+in:-0.755 
+is:-0.755 
+it:-0.761 
+that:-0.768 
+with:-0.779 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:4.263 
+roberto:4.111 
+bowfinger:3.932 
+gregg:-3.932 
+vikings:-3.713 
+weighed:-3.713 
+errol:3.434 
+fritz:3.434 
+trailing:3.434 
+salaries:-3.434 
+alexandre:-3.434 
+renown:3.045 
+stendhal:3.045 
+coinciding:-3.044 
+humanities:-3.044 
+barb:-3.044 
+disconnect:-3.044 
+ahh:-3.044 
+apparantly:-3.044 
+mulholland:-3.044 
+
+
+#SCORE f1:0.712446 tp:83 fn:18 fp:49 tn:50
+0.712446,83,18,49,50
+#Word Rankings
+Class:-1| 
+the:-0.755 
+and:-0.755 
+of:-0.756 
+to:-0.756 
+is:-0.756 
+a:-0.757 
+in:-0.758 
+that:-0.770 
+it:-0.778 
+with:-0.785 
+
+Class:1| 
+the:-0.756 
+a:-0.756 
+of:-0.756 
+and:-0.757 
+to:-0.757 
+in:-0.758 
+is:-0.758 
+it:-0.766 
+that:-0.772 
+with:-0.781 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+elmore:4.511 
+uncompromising:4.394 
+darren:-4.263 
+weighed:-3.932 
+playwright:3.932 
+roberto:3.932 
+ahh:-3.434 
+vikings:-3.434 
+alexandre:-3.434 
+cashing:-3.434 
+fritz:3.434 
+trailing:3.434 
+coinciding:-3.045 
+humanities:-3.045 
+disconnect:-3.045 
+apparantly:-3.045 
+mulholland:-3.045 
+confucius:-3.045 
+pollock:3.044 
+curdled:3.044 
+
+
+#SCORE f1:0.752212 tp:85 fn:17 fp:39 tn:59
+0.752212,85,17,39,59
+#Word Rankings
+Class:-1| 
+the:-0.754 
+and:-0.754 
+of:-0.755 
+to:-0.755 
+is:-0.755 
+a:-0.757 
+in:-0.757 
+that:-0.774 
+it:-0.775 
+not:-0.783 
+
+Class:1| 
+the:-0.757 
+a:-0.757 
+of:-0.757 
+and:-0.758 
+to:-0.758 
+in:-0.759 
+is:-0.759 
+it:-0.767 
+that:-0.772 
+with:-0.780 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:4.262 
+weighed:-3.932 
+roberto:3.932 
+ahh:-3.434 
+tomb:-3.434 
+vikings:-3.434 
+salaries:-3.434 
+errol:3.434 
+fritz:3.434 
+trailing:3.434 
+coinciding:-3.045 
+disconnect:-3.045 
+apparantly:-3.045 
+mulholland:-3.045 
+alexandre:-3.045 
+confucius:-3.045 
+pollock:3.044 
+curdled:3.044 
+labelling:3.044 
+renown:3.044 
+
+
+#SCORE f1:0.680628 tp:65 fn:45 fp:16 tn:74
+0.680628,65,45,16,74
+#Word Rankings
+Class:-1| 
+the:-0.744 
+and:-0.744 
+of:-0.744 
+to:-0.745 
+is:-0.745 
+a:-0.748 
+in:-0.748 
+that:-0.765 
+it:-0.768 
+not:-0.772 
+
+Class:1| 
+the:-0.767 
+a:-0.767 
+of:-0.767 
+and:-0.768 
+to:-0.768 
+in:-0.769 
+is:-0.769 
+it:-0.778 
+that:-0.784 
+with:-0.791 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:4.110 
+weighed:-3.715 
+roberto:3.712 
+wonderland:3.712 
+ahh:-3.435 
+vikings:-3.435 
+salaries:-3.435 
+alexandre:-3.435 
+trailing:3.433 
+coinciding:-3.046 
+humanities:-3.046 
+burnt:-3.046 
+apparantly:-3.046 
+mulholland:-3.046 
+confucius:-3.046 
+pollock:3.043 
+curdled:3.043 
+errol:3.043 
+labelling:3.043 
+renown:3.043 
+
+
+#SCORE f1:0.727273 tp:84 fn:19 fp:44 tn:53
+0.727273,84,19,44,53
+#Word Rankings
+Class:-1| 
+the:-0.752 
+and:-0.752 
+is:-0.752 
+of:-0.754 
+to:-0.754 
+a:-0.756 
+in:-0.756 
+that:-0.774 
+it:-0.776 
+not:-0.781 
+
+Class:1| 
+the:-0.758 
+a:-0.758 
+of:-0.758 
+and:-0.760 
+in:-0.760 
+to:-0.760 
+is:-0.761 
+it:-0.770 
+that:-0.776 
+with:-0.783 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:4.394 
+roberto:4.110 
+metro:-3.932 
+wolfgang:3.931 
+vikings:-3.714 
+weighed:-3.714 
+buffalo:3.713 
+ahh:-3.434 
+salaries:-3.434 
+alexandre:-3.434 
+gordie:-3.434 
+errol:3.434 
+coinciding:-3.045 
+humanities:-3.045 
+disconnect:-3.045 
+apparantly:-3.045 
+confucius:-3.045 
+pollock:3.044 
+curdled:3.044 
+labelling:3.044 
+
+
+f1scoreAvg:0.705
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 40 seconds
+[INFO] Finished at: Mon Feb 13 22:47:49 PST 2012
+[INFO] Final Memory: 19M/173M
+[INFO] ------------------------------------------------------------------------

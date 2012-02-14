@@ -1,0 +1,541 @@
+[INFO] 
+NOTE: Maven is executing in offline mode. Any artifacts not already in your local
+repository will be inaccessible.
+
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building bhdmhw1
+[INFO]    task-segment: [scala:compile, scala:run]
+[INFO] ------------------------------------------------------------------------
+[INFO] [scala:compile {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] includes = [**/*.scala,**/*.java,]
+[INFO] excludes = []
+[INFO] /home/javirosa/projects/bhdm/bhdmhw1/src/main/scala:-1: info: compiling
+[INFO] Compiling 2 source files to /home/javirosa/projects/bhdm/bhdmhw1/target/classes at 1329200600603
+[WARNING] warning: there were deprecation warnings; re-run with -deprecation for details
+[WARNING] one warning found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 12 s
+[INFO] Preparing scala:run
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2005 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/javirosa/projects/bhdm/bhdmhw1/src/test/resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [scala:run {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] launcher 'Main' selected => com.manmachinesoftware.app.bhdmhw1.Main
+#SCORE f1:0.795812 tp:76 fn:21 fp:18 tn:85
+0.795812,76,21,18,85
+#Word Rankings
+Class:-1| 
+film:-4.012 
+movi:-4.288 
+like:-4.882 
+charact:-5.044 
+get:-5.089 
+just:-5.181 
+make:-5.189 
+time:-5.257 
+even:-5.287 
+scene:-5.350 
+
+Class:1| 
+film:-3.872 
+movi:-4.574 
+charact:-4.974 
+like:-4.998 
+make:-5.182 
+time:-5.232 
+get:-5.299 
+stori:-5.387 
+just:-5.396 
+scene:-5.397 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+gordi:-5.652 
+hedwig:5.551 
+pollock:5.398 
+zooland:4.788 
+caveman:4.709 
+quilt:4.709 
+andromeda:4.528 
+roberto:4.528 
+laserman:4.424 
+curdl:4.424 
+tecton:-4.350 
+hav:-4.350 
+niagara:4.307 
+unzip:4.307 
+alchemi:4.307 
+uncompromis:4.307 
+1912:4.175 
+merchant:-4.019 
+alexandr:-4.019 
+standoff:3.845 
+
+
+#SCORE f1:0.751269 tp:74 fn:30 fp:19 tn:77
+0.751269,74,30,19,77
+#Word Rankings
+Class:-1| 
+film:-4.006 
+movi:-4.280 
+like:-4.862 
+charact:-5.022 
+get:-5.085 
+just:-5.160 
+make:-5.167 
+time:-5.245 
+even:-5.271 
+scene:-5.343 
+
+Class:1| 
+film:-3.899 
+movi:-4.549 
+charact:-4.985 
+like:-5.000 
+make:-5.179 
+time:-5.247 
+get:-5.277 
+scene:-5.398 
+will:-5.403 
+just:-5.410 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+pollock:5.405 
+chocolat:5.001 
+zooland:4.795 
+caveman:4.716 
+quilt:4.716 
+gia:-4.695 
+andromeda:4.535 
+curdl:4.535 
+mulholland:-4.475 
+unzip:4.431 
+laserman:4.431 
+uncompromis:4.431 
+tecton:-4.343 
+hav:-4.343 
+niagara:4.314 
+alchemi:4.314 
+roberto:4.314 
+1912:4.031 
+stendhal:4.031 
+alexandr:-4.012 
+
+
+#SCORE f1:0.705882 tp:72 fn:21 fp:39 tn:68
+0.705882,72,21,39,68
+#Word Rankings
+Class:-1| 
+film:-4.012 
+movi:-4.280 
+like:-4.876 
+charact:-5.024 
+get:-5.098 
+just:-5.171 
+make:-5.180 
+even:-5.268 
+time:-5.289 
+scene:-5.371 
+
+Class:1| 
+film:-3.879 
+movi:-4.556 
+charact:-4.983 
+like:-4.996 
+make:-5.163 
+time:-5.221 
+get:-5.261 
+scene:-5.372 
+stori:-5.391 
+just:-5.400 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+metro:-5.654 
+pollock:5.395 
+chocolat:4.992 
+zooland:4.785 
+quilt:4.706 
+gia:-4.705 
+andromeda:4.525 
+curdl:4.525 
+roberto:4.525 
+unzip:4.421 
+laserman:4.421 
+uncompromis:4.421 
+tecton:-4.352 
+hav:-4.352 
+niagara:4.305 
+alchemi:4.305 
+1912:4.173 
+stendhal:4.173 
+mulholland:-4.022 
+calendar:4.021 
+
+
+#SCORE f1:0.717949 tp:70 fn:29 fp:26 tn:75
+0.717949,70,29,26,75
+#Word Rankings
+Class:-1| 
+film:-4.020 
+movi:-4.263 
+like:-4.872 
+charact:-5.015 
+get:-5.100 
+just:-5.168 
+make:-5.179 
+time:-5.257 
+even:-5.275 
+scene:-5.347 
+
+Class:1| 
+film:-3.871 
+movi:-4.555 
+charact:-4.972 
+like:-4.993 
+make:-5.182 
+time:-5.231 
+get:-5.295 
+stori:-5.393 
+scene:-5.403 
+will:-5.426 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+tomb:-5.386 
+deuc:-5.225 
+chocolat:4.998 
+caveman:4.713 
+quilt:4.713 
+gia:-4.698 
+andromeda:4.532 
+curdl:4.532 
+mulholland:-4.477 
+laserman:4.428 
+tecton:-4.346 
+hav:-4.346 
+niagara:4.311 
+alchemi:4.311 
+uncompromis:4.311 
+roberto:4.311 
+stendhal:4.180 
+calendar:4.028 
+alexandr:-4.015 
+bulworth:3.884 
+
+
+#SCORE f1:0.768473 tp:78 fn:26 fp:21 tn:75
+0.768473,78,26,21,75
+#Word Rankings
+Class:-1| 
+film:-3.996 
+movi:-4.289 
+like:-4.877 
+charact:-5.014 
+get:-5.078 
+just:-5.176 
+make:-5.182 
+time:-5.263 
+even:-5.281 
+scene:-5.346 
+
+Class:1| 
+film:-3.887 
+movi:-4.547 
+charact:-4.994 
+like:-4.996 
+make:-5.183 
+time:-5.235 
+get:-5.312 
+stori:-5.398 
+scene:-5.412 
+just:-5.417 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+pollock:5.351 
+chocolat:4.990 
+zooland:4.783 
+gia:-4.707 
+caveman:4.704 
+quilt:4.704 
+andromeda:4.523 
+curdl:4.523 
+roberto:4.523 
+mulholland:-4.486 
+unzip:4.419 
+laserman:4.419 
+uncompromis:4.419 
+tecton:-4.355 
+hav:-4.355 
+niagara:4.303 
+alchemi:4.303 
+stendhal:4.171 
+alexandr:-4.024 
+1912:4.019 
+
+
+#SCORE f1:0.763819 tp:76 fn:22 fp:25 tn:77
+0.763819,76,22,25,77
+#Word Rankings
+Class:-1| 
+film:-4.010 
+movi:-4.280 
+like:-4.880 
+charact:-5.034 
+get:-5.106 
+just:-5.171 
+make:-5.177 
+time:-5.242 
+even:-5.280 
+scene:-5.360 
+
+Class:1| 
+film:-3.874 
+movi:-4.556 
+charact:-4.972 
+like:-4.986 
+make:-5.193 
+time:-5.228 
+get:-5.284 
+scene:-5.376 
+stori:-5.400 
+just:-5.401 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+pollock:5.394 
+chocolat:4.990 
+zooland:4.784 
+gia:-4.706 
+caveman:4.705 
+keen:4.705 
+quilt:4.705 
+andromeda:4.524 
+curdl:4.524 
+roberto:4.524 
+mulholland:-4.486 
+unzip:4.420 
+laserman:4.420 
+tecton:-4.354 
+hav:-4.354 
+niagara:4.303 
+alchemi:4.303 
+uncompromis:4.303 
+1912:4.172 
+stendhal:4.172 
+
+
+#SCORE f1:0.811881 tp:82 fn:21 fp:17 tn:80
+0.811881,82,21,17,80
+#Word Rankings
+Class:-1| 
+film:-4.005 
+movi:-4.282 
+like:-4.869 
+charact:-5.014 
+get:-5.066 
+just:-5.184 
+make:-5.186 
+time:-5.248 
+even:-5.273 
+scene:-5.352 
+
+Class:1| 
+film:-3.881 
+movi:-4.562 
+charact:-4.977 
+like:-4.989 
+make:-5.176 
+time:-5.228 
+get:-5.302 
+will:-5.410 
+scene:-5.412 
+just:-5.418 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+pollock:5.402 
+chocolat:4.999 
+zooland:4.792 
+caveman:4.713 
+quilt:4.713 
+gia:-4.698 
+andromeda:4.532 
+curdl:4.532 
+mulholland:-4.477 
+unzip:4.428 
+laserman:4.428 
+uncompromis:4.428 
+roberto:4.428 
+niagara:4.312 
+alchemi:4.312 
+stendhal:4.180 
+1912:4.028 
+calendar:4.028 
+standoff:3.849 
+errol:3.849 
+
+
+#SCORE f1:0.821782 tp:83 fn:19 fp:17 tn:81
+0.821782,83,19,17,81
+#Word Rankings
+Class:-1| 
+film:-4.004 
+movi:-4.275 
+like:-4.857 
+charact:-5.025 
+get:-5.078 
+just:-5.162 
+make:-5.174 
+time:-5.242 
+even:-5.284 
+scene:-5.336 
+
+Class:1| 
+film:-3.885 
+movi:-4.554 
+charact:-4.977 
+like:-4.999 
+make:-5.167 
+time:-5.221 
+get:-5.285 
+stori:-5.387 
+scene:-5.412 
+just:-5.414 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+pollock:5.402 
+vike:-5.336 
+wyatt:-4.958 
+zooland:4.792 
+chocolat:4.792 
+caveman:4.713 
+quilt:4.713 
+gia:-4.698 
+roberto:4.532 
+mulholland:-4.478 
+unzip:4.428 
+andromeda:4.428 
+laserman:4.428 
+curdl:4.428 
+tecton:-4.346 
+hav:-4.346 
+niagara:4.311 
+alchemi:4.311 
+1912:4.179 
+stendhal:4.179 
+
+
+#SCORE f1:0.793970 tp:79 fn:21 fp:20 tn:80
+0.793970,79,21,20,80
+#Word Rankings
+Class:-1| 
+film:-4.008 
+movi:-4.275 
+like:-4.882 
+charact:-5.007 
+get:-5.073 
+make:-5.172 
+just:-5.178 
+time:-5.246 
+even:-5.266 
+scene:-5.355 
+
+Class:1| 
+film:-3.886 
+movi:-4.552 
+charact:-4.989 
+like:-5.017 
+make:-5.173 
+time:-5.248 
+get:-5.290 
+stori:-5.387 
+scene:-5.390 
+just:-5.407 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+pollock:5.396 
+chocolat:4.993 
+zooland:4.786 
+caveman:4.707 
+quilt:4.707 
+gia:-4.704 
+gregg:-4.704 
+elmor:4.621 
+andromeda:4.526 
+curdl:4.526 
+roberto:4.526 
+mulholland:-4.483 
+unzip:4.422 
+tecton:-4.351 
+hav:-4.351 
+alchemi:4.306 
+stendhal:4.174 
+uncompromis:4.174 
+1912:4.022 
+alexandr:-4.021 
+
+
+#SCORE f1:0.786070 tp:79 fn:21 fp:22 tn:78
+0.786070,79,21,22,78
+#Word Rankings
+Class:-1| 
+film:-4.009 
+movi:-4.271 
+like:-4.892 
+charact:-5.021 
+get:-5.090 
+just:-5.164 
+make:-5.186 
+time:-5.239 
+even:-5.275 
+scene:-5.352 
+
+Class:1| 
+film:-3.888 
+movi:-4.539 
+charact:-4.979 
+like:-4.981 
+make:-5.191 
+time:-5.231 
+get:-5.276 
+scene:-5.379 
+stori:-5.403 
+will:-5.408 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+krippendorf:-5.872 
+pollock:5.384 
+chocolat:4.980 
+nosferatu:4.916 
+zooland:4.774 
+gia:-4.716 
+caveman:4.695 
+mulholland:-4.495 
+unzip:4.410 
+laserman:4.410 
+tecton:-4.364 
+hav:-4.364 
+niagara:4.293 
+uncompromis:4.293 
+stendhal:4.162 
+alexandr:-4.033 
+1912:4.010 
+standoff:3.831 
+errol:3.831 
+roberto:3.831 
+
+
+f1scoreAvg:0.772
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 44 seconds
+[INFO] Finished at: Mon Feb 13 22:24:03 PST 2012
+[INFO] Final Memory: 19M/173M
+[INFO] ------------------------------------------------------------------------

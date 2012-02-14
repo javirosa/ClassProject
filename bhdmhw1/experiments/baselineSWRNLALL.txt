@@ -1,0 +1,541 @@
+[INFO] 
+NOTE: Maven is executing in offline mode. Any artifacts not already in your local
+repository will be inaccessible.
+
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building bhdmhw1
+[INFO]    task-segment: [scala:compile, scala:run]
+[INFO] ------------------------------------------------------------------------
+[INFO] [scala:compile {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] includes = [**/*.scala,**/*.java,]
+[INFO] excludes = []
+[INFO] /home/javirosa/projects/bhdm/bhdmhw1/src/main/scala:-1: info: compiling
+[INFO] Compiling 2 source files to /home/javirosa/projects/bhdm/bhdmhw1/target/classes at 1329199545723
+[WARNING] warning: there were deprecation warnings; re-run with -deprecation for details
+[WARNING] one warning found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 11 s
+[INFO] Preparing scala:run
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2005 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/javirosa/projects/bhdm/bhdmhw1/src/test/resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [scala:run {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] launcher 'Main' selected => com.manmachinesoftware.app.bhdmhw1.Main
+#SCORE f1:0.707224 tp:93 fn:1 fp:76 tn:30
+0.707224,93,1,76,30
+#Word Rankings
+Class:-1| 
+film:-1.629 
+movie:-1.684 
+time:-1.958 
+good:-2.004 
+bad:-2.139 
+story:-2.139 
+plot:-2.141 
+will:-2.158 
+well:-2.192 
+characters:-2.222 
+
+Class:1| 
+film:-1.559 
+movie:-1.741 
+time:-1.900 
+good:-1.971 
+well:-1.988 
+will:-2.015 
+story:-2.022 
+characters:-2.162 
+life:-2.174 
+best:-2.187 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.087 
+1912:1.953 
+intolerance:1.799 
+standoff:1.799 
+roberto:1.799 
+weighed:-1.785 
+marvelous:1.712 
+funnest:1.617 
+poker:1.617 
+inseparable:1.617 
+hypnotized:1.617 
+calendar:1.617 
+vikings:-1.602 
+ugh:-1.602 
+mpaa:1.548 
+keen:1.548 
+elmore:1.511 
+cinematically:1.511 
+groom:1.511 
+inspire:-1.497 
+
+
+#SCORE f1:0.709434 tp:94 fn:5 fp:72 tn:29
+0.709434,94,5,72,29
+#Word Rankings
+Class:-1| 
+film:-1.614 
+movie:-1.671 
+time:-1.937 
+good:-1.996 
+plot:-2.108 
+bad:-2.114 
+story:-2.133 
+well:-2.158 
+will:-2.160 
+characters:-2.205 
+
+Class:1| 
+film:-1.567 
+movie:-1.760 
+time:-1.889 
+good:-1.972 
+well:-1.993 
+will:-2.019 
+story:-2.025 
+best:-2.150 
+characters:-2.156 
+life:-2.159 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+fortunate:2.081 
+1912:2.081 
+uncompromising:2.081 
+roberto:1.947 
+calendar:1.793 
+marvelous:1.793 
+weighed:-1.791 
+refreshing:1.639 
+intolerance:1.611 
+mediums:1.611 
+standoff:1.611 
+funnest:1.611 
+inseparable:1.611 
+doesn:1.611 
+hypnotized:1.611 
+vikings:-1.608 
+keen:1.542 
+guilt:1.483 
+coen:1.468 
+ugh:-1.465 
+
+
+#SCORE f1:0.698885 tp:94 fn:3 fp:78 tn:25
+0.698885,94,3,78,25
+#Word Rankings
+Class:-1| 
+film:-1.624 
+movie:-1.672 
+time:-1.956 
+good:-2.006 
+plot:-2.126 
+story:-2.128 
+will:-2.139 
+bad:-2.141 
+well:-2.161 
+director:-2.197 
+
+Class:1| 
+film:-1.567 
+movie:-1.765 
+time:-1.908 
+good:-1.984 
+well:-1.992 
+will:-2.024 
+story:-2.032 
+life:-2.151 
+best:-2.162 
+characters:-2.184 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.201 
+1912:2.083 
+groom:2.083 
+roberto:1.949 
+calendar:1.949 
+ado:-1.942 
+mpaa:1.875 
+marvelous:1.836 
+intolerance:1.795 
+elmore:1.613 
+devotees:1.613 
+inseparable:1.613 
+vikings:-1.606 
+wyatt:-1.606 
+weighed:-1.606 
+ugh:-1.537 
+worst:-1.463 
+refreshing:1.421 
+submarine:1.390 
+keen:1.390 
+
+
+#SCORE f1:0.762646 tp:98 fn:6 fp:55 tn:41
+0.762646,98,6,55,41
+#Word Rankings
+Class:-1| 
+film:-1.614 
+movie:-1.664 
+time:-1.948 
+good:-1.993 
+bad:-2.098 
+plot:-2.107 
+story:-2.117 
+will:-2.141 
+well:-2.159 
+director:-2.202 
+
+Class:1| 
+film:-1.579 
+movie:-1.776 
+time:-1.911 
+good:-1.984 
+well:-2.007 
+will:-2.034 
+story:-2.046 
+best:-2.164 
+life:-2.177 
+characters:-2.184 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+1912:2.075 
+uncompromising:2.075 
+ugh:-2.020 
+stinker:-1.951 
+roberto:1.941 
+intolerance:1.787 
+standoff:1.787 
+calendar:1.787 
+marvelous:1.787 
+poker:1.730 
+vikings:-1.614 
+weighed:-1.614 
+inseparable:1.605 
+hypnotized:1.605 
+mpaa:1.536 
+worst:-1.517 
+keen:1.462 
+revolutionary:1.462 
+beware:-1.391 
+krippendorf:-1.391 
+
+
+#SCORE f1:0.691729 tp:92 fn:0 fp:82 tn:26
+0.691729,92,0,82,26
+#Word Rankings
+Class:-1| 
+film:-1.627 
+movie:-1.678 
+time:-1.957 
+good:-2.006 
+plot:-2.129 
+bad:-2.138 
+story:-2.142 
+will:-2.153 
+well:-2.175 
+characters:-2.196 
+
+Class:1| 
+film:-1.558 
+movie:-1.756 
+time:-1.892 
+good:-1.968 
+well:-1.989 
+story:-2.006 
+will:-2.008 
+life:-2.143 
+best:-2.168 
+characters:-2.188 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+keen:2.494 
+uncompromising:2.089 
+1912:1.955 
+mpaa:1.881 
+intolerance:1.801 
+standoff:1.801 
+roberto:1.801 
+calendar:1.801 
+weighed:-1.782 
+marvelous:1.759 
+nosferatu:1.619 
+elmore:1.619 
+anxious:1.619 
+inseparable:1.619 
+hypnotized:1.619 
+anna:1.514 
+ugh:-1.457 
+decades:1.456 
+giles:1.396 
+dreamworks:1.396 
+
+
+#SCORE f1:0.726592 tp:97 fn:1 fp:72 tn:30
+0.726592,97,1,72,30
+#Word Rankings
+Class:-1| 
+film:-1.625 
+movie:-1.670 
+time:-1.938 
+good:-2.010 
+bad:-2.130 
+story:-2.134 
+plot:-2.140 
+well:-2.151 
+will:-2.167 
+characters:-2.211 
+
+Class:1| 
+film:-1.568 
+movie:-1.753 
+time:-1.904 
+good:-1.973 
+well:-1.990 
+story:-2.015 
+will:-2.025 
+life:-2.158 
+characters:-2.174 
+best:-2.178 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+marvelous:2.200 
+uncompromising:2.082 
+1912:1.948 
+roberto:1.948 
+calendar:1.948 
+standoff:1.794 
+bowfinger:1.794 
+gregg:-1.789 
+poker:1.737 
+hearty:1.612 
+funnest:1.612 
+hypnotized:1.612 
+vikings:-1.607 
+sensuous:-1.607 
+weighed:-1.607 
+mpaa:1.543 
+leslie:-1.538 
+ugh:-1.538 
+elmore:1.506 
+refreshing:1.449 
+
+
+#SCORE f1:0.764228 tp:94 fn:7 fp:51 tn:48
+0.764228,94,7,51,48
+#Word Rankings
+Class:-1| 
+film:-1.622 
+movie:-1.664 
+time:-1.938 
+good:-2.004 
+will:-2.128 
+plot:-2.130 
+bad:-2.143 
+story:-2.143 
+well:-2.159 
+characters:-2.204 
+
+Class:1| 
+film:-1.580 
+movie:-1.765 
+time:-1.912 
+good:-1.988 
+well:-1.996 
+will:-2.026 
+story:-2.036 
+life:-2.171 
+best:-2.191 
+characters:-2.198 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+elmore:2.301 
+uncompromising:2.196 
+marvelous:2.119 
+darren:-2.081 
+1912:1.945 
+calendar:1.945 
+weighed:-1.793 
+intolerance:1.791 
+playwright:1.791 
+standoff:1.791 
+roberto:1.791 
+funnest:1.608 
+inseparable:1.608 
+preposterous:-1.542 
+8mm:-1.505 
+dreamworks:1.503 
+cinematically:1.503 
+groom:1.503 
+ugh:-1.468 
+keen:1.465 
+
+
+#SCORE f1:0.766798 tp:97 fn:5 fp:54 tn:44
+0.766798,97,5,54,44
+#Word Rankings
+Class:-1| 
+film:-1.615 
+movie:-1.661 
+time:-1.944 
+good:-1.988 
+plot:-2.132 
+story:-2.132 
+bad:-2.136 
+will:-2.147 
+well:-2.162 
+characters:-2.187 
+
+Class:1| 
+film:-1.573 
+movie:-1.760 
+time:-1.913 
+good:-1.974 
+well:-2.008 
+story:-2.023 
+will:-2.041 
+best:-2.192 
+characters:-2.194 
+life:-2.199 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+1912:2.077 
+uncompromising:2.077 
+calendar:1.944 
+weighed:-1.794 
+standoff:1.789 
+wednesday:1.789 
+roberto:1.789 
+marvelous:1.789 
+renee:-1.707 
+leslie:-1.612 
+unabashedly:-1.612 
+intolerance:1.607 
+funnest:1.607 
+hypnotized:1.607 
+worst:-1.532 
+inspire:-1.506 
+defending:1.502 
+refreshing:1.474 
+foremost:1.464 
+revolutionary:1.464 
+
+
+#SCORE f1:0.791667 tp:95 fn:15 fp:35 tn:55
+0.791667,95,15,35,55
+#Word Rankings
+Class:-1| 
+film:-1.597 
+movie:-1.648 
+time:-1.936 
+good:-1.971 
+plot:-2.095 
+bad:-2.108 
+story:-2.120 
+well:-2.133 
+will:-2.142 
+characters:-2.173 
+
+Class:1| 
+film:-1.585 
+movie:-1.791 
+time:-1.935 
+good:-1.994 
+well:-2.038 
+will:-2.038 
+story:-2.052 
+characters:-2.179 
+life:-2.188 
+best:-2.199 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+calendar:1.934 
+uncompromising:1.934 
+marvelous:1.860 
+1912:1.780 
+coen:1.662 
+weighed:-1.621 
+intolerance:1.597 
+standoff:1.597 
+wonderland:1.597 
+inseparable:1.597 
+roberto:1.597 
+elmore:1.597 
+refreshing:1.539 
+initially:1.504 
+worst:-1.502 
+spoiled:-1.459 
+ugh:-1.398 
+forgetful:-1.398 
+vikings:-1.398 
+salaries:-1.398 
+
+
+#SCORE f1:0.741036 tp:93 fn:10 fp:55 tn:42
+0.741036,93,10,55,42
+#Word Rankings
+Class:-1| 
+film:-1.614 
+movie:-1.658 
+time:-1.936 
+good:-1.986 
+plot:-2.107 
+bad:-2.107 
+story:-2.142 
+will:-2.153 
+well:-2.157 
+characters:-2.187 
+
+Class:1| 
+film:-1.576 
+movie:-1.782 
+time:-1.905 
+good:-1.986 
+well:-2.016 
+will:-2.028 
+story:-2.036 
+life:-2.170 
+best:-2.179 
+characters:-2.190 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.194 
+marvelous:2.076 
+ugh:-2.018 
+stigmata:-1.949 
+1912:1.942 
+roberto:1.942 
+metro:-1.795 
+intolerance:1.788 
+wolfgang:1.788 
+calendar:1.788 
+lean:1.731 
+vikings:-1.613 
+weighed:-1.613 
+elmore:1.606 
+standoff:1.606 
+funnest:1.606 
+hypnotized:1.606 
+buffalo:1.606 
+dreamworks:1.606 
+coen:1.606 
+
+
+f1scoreAvg:0.736
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 48 seconds
+[INFO] Finished at: Mon Feb 13 22:06:32 PST 2012
+[INFO] Final Memory: 18M/171M
+[INFO] ------------------------------------------------------------------------

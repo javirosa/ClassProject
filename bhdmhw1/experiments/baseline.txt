@@ -1,0 +1,541 @@
+[INFO] 
+NOTE: Maven is executing in offline mode. Any artifacts not already in your local
+repository will be inaccessible.
+
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building bhdmhw1
+[INFO]    task-segment: [scala:compile, scala:run]
+[INFO] ------------------------------------------------------------------------
+[INFO] [scala:compile {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] includes = [**/*.scala,**/*.java,]
+[INFO] excludes = []
+[INFO] /home/javirosa/projects/bhdm/bhdmhw1/src/main/scala:-1: info: compiling
+[INFO] Compiling 2 source files to /home/javirosa/projects/bhdm/bhdmhw1/target/classes at 1329201792749
+[WARNING] warning: there were deprecation warnings; re-run with -deprecation for details
+[WARNING] one warning found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 10 s
+[INFO] Preparing scala:run
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2005 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/javirosa/projects/bhdm/bhdmhw1/src/test/resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [scala:run {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] launcher 'Main' selected => com.manmachinesoftware.app.bhdmhw1.Main
+#SCORE f1:0.664311 tp:94 fn:0 fp:95 tn:11
+0.664311,94,0,95,11
+#Word Rankings
+Class:-1| 
+the:-1.195 
+and:-1.196 
+of:-1.196 
+to:-1.197 
+is:-1.197 
+a:-1.198 
+in:-1.198 
+it:-1.215 
+that:-1.217 
+with:-1.226 
+
+Class:1| 
+the:-1.176 
+a:-1.176 
+of:-1.176 
+to:-1.176 
+and:-1.177 
+is:-1.177 
+in:-1.178 
+it:-1.187 
+that:-1.192 
+with:-1.202 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.085 
+roberto:1.797 
+weighed:-1.787 
+ugh:-1.604 
+vikings:-1.604 
+mpaa:1.546 
+elmore:1.509 
+cinematically:1.509 
+spoiled:-1.442 
+errol:1.391 
+arriving:1.391 
+fritz:1.391 
+anna:1.340 
+reflecting:1.258 
+gregg:-1.248 
+lean:1.229 
+preposterous:-1.173 
+dreamworks:1.168 
+pollock:1.104 
+wolfgang:1.104 
+
+
+#SCORE f1:0.703704 tp:95 fn:4 fp:76 tn:25
+0.703704,95,4,76,25
+#Word Rankings
+Class:-1| 
+the:-1.188 
+and:-1.188 
+is:-1.188 
+of:-1.189 
+to:-1.189 
+a:-1.190 
+in:-1.190 
+that:-1.205 
+it:-1.207 
+with:-1.220 
+
+Class:1| 
+the:-1.184 
+a:-1.184 
+of:-1.184 
+and:-1.185 
+in:-1.185 
+to:-1.185 
+is:-1.186 
+it:-1.193 
+that:-1.199 
+with:-1.209 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.080 
+roberto:1.947 
+weighed:-1.791 
+vikings:-1.609 
+guilt:1.482 
+ugh:-1.465 
+elmore:1.387 
+fritz:1.387 
+melvin:1.387 
+trailing:1.387 
+beware:-1.385 
+salaries:-1.385 
+mpaa:1.300 
+weir:1.254 
+dreamworks:1.225 
+lean:1.225 
+ah:-1.203 
+preposterous:-1.162 
+anna:1.154 
+pollock:1.099 
+
+
+#SCORE f1:0.666667 tp:94 fn:3 fp:91 tn:12
+0.666667,94,3,91,12
+#Word Rankings
+Class:-1| 
+the:-1.191 
+and:-1.191 
+of:-1.192 
+to:-1.192 
+is:-1.192 
+in:-1.193 
+a:-1.194 
+that:-1.211 
+it:-1.215 
+not:-1.221 
+
+Class:1| 
+the:-1.181 
+a:-1.181 
+of:-1.181 
+and:-1.182 
+to:-1.182 
+in:-1.183 
+is:-1.183 
+it:-1.191 
+that:-1.195 
+with:-1.202 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.200 
+roberto:1.949 
+mpaa:1.874 
+devotees:1.612 
+elmore:1.612 
+wyatt:-1.607 
+vikings:-1.607 
+weighed:-1.607 
+ugh:-1.538 
+errol:1.389 
+fritz:1.389 
+trailing:1.389 
+ahh:-1.384 
+salaries:-1.384 
+alexandre:-1.384 
+lean:1.284 
+gregg:-1.250 
+cinematically:1.207 
+ah:-1.201 
+october:1.155 
+
+
+#SCORE f1:0.769874 tp:92 fn:12 fp:43 tn:53
+0.769874,92,12,43,53
+#Word Rankings
+Class:-1| 
+the:-1.180 
+and:-1.180 
+of:-1.181 
+to:-1.181 
+is:-1.181 
+a:-1.184 
+in:-1.184 
+it:-1.202 
+that:-1.202 
+with:-1.212 
+
+Class:1| 
+the:-1.192 
+and:-1.192 
+a:-1.192 
+of:-1.192 
+to:-1.193 
+in:-1.194 
+is:-1.194 
+it:-1.199 
+that:-1.208 
+with:-1.216 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.076 
+ugh:-2.018 
+roberto:1.942 
+vikings:-1.613 
+weighed:-1.613 
+mpaa:1.537 
+beware:-1.390 
+krippendorf:-1.390 
+ahh:-1.390 
+salaries:-1.390 
+alexandre:-1.390 
+errol:1.383 
+elmore:1.383 
+weir:1.383 
+retrospective:1.383 
+fritz:1.383 
+anna:1.277 
+gregg:-1.256 
+arriving:1.175 
+humanities:-1.102 
+
+
+#SCORE f1:0.654804 tp:92 fn:0 fp:97 tn:11
+0.654804,92,0,97,11
+#Word Rankings
+Class:-1| 
+the:-1.199 
+and:-1.199 
+to:-1.199 
+of:-1.200 
+is:-1.200 
+in:-1.201 
+a:-1.202 
+that:-1.219 
+it:-1.222 
+with:-1.228 
+
+Class:1| 
+the:-1.173 
+a:-1.173 
+of:-1.173 
+and:-1.174 
+to:-1.174 
+is:-1.174 
+in:-1.175 
+it:-1.184 
+that:-1.191 
+with:-1.196 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.086 
+mpaa:1.879 
+roberto:1.799 
+weighed:-1.785 
+nosferatu:1.616 
+elmore:1.616 
+anna:1.511 
+ugh:-1.459 
+errol:1.393 
+dreamworks:1.393 
+accepting:1.393 
+trailing:1.393 
+ahh:-1.379 
+vikings:-1.379 
+salaries:-1.379 
+alexandre:-1.379 
+lean:1.329 
+anastasia:1.260 
+gregg:-1.246 
+luckily:1.164 
+
+
+#SCORE f1:0.701493 tp:94 fn:4 fp:76 tn:26
+0.701493,94,4,76,26
+#Word Rankings
+Class:-1| 
+and:-1.188 
+the:-1.190 
+to:-1.190 
+of:-1.191 
+is:-1.191 
+a:-1.192 
+in:-1.193 
+that:-1.212 
+it:-1.213 
+not:-1.220 
+
+Class:1| 
+the:-1.182 
+a:-1.182 
+of:-1.182 
+and:-1.183 
+to:-1.183 
+in:-1.185 
+is:-1.185 
+it:-1.191 
+that:-1.198 
+with:-1.209 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.081 
+roberto:1.948 
+bowfinger:1.793 
+gregg:-1.790 
+vikings:-1.608 
+weighed:-1.608 
+mpaa:1.542 
+ugh:-1.539 
+elmore:1.506 
+errol:1.388 
+fritz:1.388 
+trailing:1.388 
+lean:1.388 
+salaries:-1.385 
+alexandre:-1.385 
+dreamworks:1.283 
+anastasia:1.254 
+bats:-1.251 
+luckily:1.238 
+cinematically:1.206 
+
+
+#SCORE f1:0.723404 tp:85 fn:16 fp:49 tn:50
+0.723404,85,16,49,50
+#Word Rankings
+Class:-1| 
+the:-1.185 
+and:-1.185 
+of:-1.186 
+to:-1.186 
+is:-1.186 
+a:-1.187 
+in:-1.188 
+that:-1.201 
+it:-1.209 
+with:-1.215 
+
+Class:1| 
+the:-1.187 
+a:-1.187 
+of:-1.187 
+and:-1.188 
+to:-1.188 
+in:-1.189 
+is:-1.189 
+it:-1.197 
+that:-1.203 
+with:-1.212 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+elmore:2.302 
+uncompromising:2.196 
+darren:-2.080 
+weighed:-1.793 
+playwright:1.791 
+roberto:1.791 
+preposterous:-1.541 
+8mm:-1.505 
+dreamworks:1.503 
+cinematically:1.503 
+ugh:-1.467 
+ahh:-1.387 
+vikings:-1.387 
+alexandre:-1.387 
+cashing:-1.387 
+fritz:1.385 
+trailing:1.385 
+mpaa:1.298 
+lucas:1.189 
+zero:-1.164 
+
+
+#SCORE f1:0.750000 tp:84 fn:18 fp:38 tn:60
+0.750000,84,18,38,60
+#Word Rankings
+Class:-1| 
+the:-1.183 
+and:-1.183 
+of:-1.185 
+to:-1.185 
+is:-1.185 
+a:-1.187 
+in:-1.187 
+that:-1.204 
+it:-1.205 
+not:-1.213 
+
+Class:1| 
+the:-1.188 
+a:-1.188 
+of:-1.188 
+and:-1.190 
+to:-1.190 
+in:-1.191 
+is:-1.191 
+it:-1.199 
+that:-1.203 
+with:-1.211 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.078 
+weighed:-1.793 
+roberto:1.790 
+renee:-1.706 
+defending:1.502 
+preposterous:-1.388 
+ahh:-1.388 
+tomb:-1.388 
+vikings:-1.388 
+salaries:-1.388 
+ugh:-1.388 
+errol:1.385 
+fritz:1.385 
+mpaa:1.385 
+trailing:1.385 
+zero:-1.254 
+arriving:1.251 
+elmore:1.251 
+spoiled:-1.226 
+topless:-1.206 
+
+
+#SCORE f1:0.608187 tp:52 fn:58 fp:9 tn:81
+0.608187,52,58,9,81
+#Word Rankings
+Class:-1| 
+the:-1.171 
+and:-1.171 
+of:-1.171 
+to:-1.172 
+is:-1.172 
+a:-1.174 
+in:-1.174 
+that:-1.192 
+it:-1.194 
+not:-1.199 
+
+Class:1| 
+the:-1.201 
+a:-1.201 
+of:-1.201 
+and:-1.202 
+to:-1.202 
+in:-1.203 
+is:-1.203 
+it:-1.212 
+that:-1.218 
+with:-1.225 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:1.937 
+weighed:-1.618 
+elmore:1.601 
+roberto:1.601 
+wonderland:1.601 
+spoiled:-1.456 
+ahh:-1.395 
+vikings:-1.395 
+salaries:-1.395 
+alexandre:-1.395 
+ugh:-1.395 
+mpaa:1.378 
+trailing:1.378 
+lucas:1.335 
+dreamworks:1.272 
+gregg:-1.261 
+anna:1.215 
+zero:-1.203 
+cinematically:1.195 
+lean:1.154 
+
+
+#SCORE f1:0.735426 tp:82 fn:21 fp:38 tn:59
+0.735426,82,21,38,59
+#Word Rankings
+Class:-1| 
+the:-1.182 
+and:-1.182 
+is:-1.182 
+of:-1.183 
+to:-1.183 
+a:-1.185 
+in:-1.185 
+that:-1.203 
+it:-1.205 
+not:-1.210 
+
+Class:1| 
+the:-1.190 
+a:-1.190 
+of:-1.190 
+and:-1.191 
+in:-1.191 
+to:-1.191 
+is:-1.192 
+it:-1.201 
+that:-1.208 
+with:-1.215 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.195 
+ugh:-2.017 
+roberto:1.943 
+metro:-1.794 
+wolfgang:1.789 
+lean:1.732 
+vikings:-1.612 
+weighed:-1.612 
+elmore:1.607 
+dreamworks:1.607 
+buffalo:1.607 
+mpaa:1.464 
+ahh:-1.389 
+salaries:-1.389 
+alexandre:-1.389 
+gordie:-1.389 
+zero:-1.389 
+errol:1.384 
+gregg:-1.255 
+preposterous:-1.166 
+
+
+f1scoreAvg:0.698
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 39 seconds
+[INFO] Finished at: Mon Feb 13 22:43:49 PST 2012
+[INFO] Final Memory: 18M/171M
+[INFO] ------------------------------------------------------------------------

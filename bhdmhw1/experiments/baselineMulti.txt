@@ -1,0 +1,541 @@
+[INFO] 
+NOTE: Maven is executing in offline mode. Any artifacts not already in your local
+repository will be inaccessible.
+
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building bhdmhw1
+[INFO]    task-segment: [scala:compile, scala:run]
+[INFO] ------------------------------------------------------------------------
+[INFO] [scala:compile {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] includes = [**/*.scala,**/*.java,]
+[INFO] excludes = []
+[INFO] /home/javirosa/projects/bhdm/bhdmhw1/src/main/scala:-1: info: compiling
+[INFO] Compiling 2 source files to /home/javirosa/projects/bhdm/bhdmhw1/target/classes at 1329202568952
+[WARNING] warning: there were deprecation warnings; re-run with -deprecation for details
+[WARNING] one warning found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 10 s
+[INFO] Preparing scala:run
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2005 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/javirosa/projects/bhdm/bhdmhw1/src/test/resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [scala:run {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] launcher 'Main' selected => com.manmachinesoftware.app.bhdmhw1.Main
+#SCORE f1:0.729614 tp:85 fn:9 fp:54 tn:52
+0.729614,85,9,54,52
+#Word Rankings
+Class:-1| 
+the:-2.898 
+a:-3.574 
+and:-3.703 
+to:-3.722 
+of:-3.722 
+is:-4.005 
+in:-4.149 
+that:-4.404 
+it:-4.407 
+not:-4.637 
+
+Class:1| 
+the:-2.821 
+a:-3.542 
+and:-3.552 
+of:-3.620 
+to:-3.741 
+is:-3.874 
+in:-4.086 
+it:-4.413 
+that:-4.454 
+as:-4.677 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+pollock:3.119 
+vikings:-2.739 
+frequency:2.539 
+truman:2.510 
+8mm:-2.402 
+bowfinger:2.357 
+mulholland:-2.297 
+tomb:-2.240 
+tectonic:-2.179 
+hav:-2.179 
+bats:-2.179 
+niagara:2.097 
+unzipped:2.097 
+roberto:2.097 
+uncompromising:2.097 
+alchemy:2.097 
+godzilla:-2.022 
+metro:-2.009 
+stendhal:1.980 
+barb:-1.892 
+
+
+#SCORE f1:0.688995 tp:72 fn:27 fp:38 tn:63
+0.688995,72,27,38,63
+#Word Rankings
+Class:-1| 
+the:-2.893 
+a:-3.561 
+and:-3.703 
+of:-3.708 
+to:-3.713 
+is:-3.997 
+in:-4.138 
+that:-4.395 
+it:-4.402 
+not:-4.652 
+
+Class:1| 
+the:-2.824 
+a:-3.550 
+and:-3.561 
+of:-3.625 
+to:-3.744 
+is:-3.880 
+in:-4.089 
+it:-4.426 
+that:-4.451 
+as:-4.682 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+pollock:3.105 
+vikings:-2.753 
+bats:-2.753 
+truman:2.519 
+mulholland:-2.311 
+roberto:2.284 
+tomb:-2.254 
+tectonic:-2.193 
+hav:-2.193 
+curdled:2.189 
+frequency:2.155 
+darren:-2.151 
+niagara:2.084 
+unzipped:2.084 
+uncompromising:2.084 
+alchemy:2.084 
+nosferatu:1.966 
+bowfinger:1.966 
+stendhal:1.966 
+8mm:-1.946 
+
+
+#SCORE f1:0.712329 tp:78 fn:19 fp:44 tn:59
+0.712329,78,19,44,59
+#Word Rankings
+Class:-1| 
+the:-2.902 
+a:-3.568 
+and:-3.704 
+of:-3.716 
+to:-3.719 
+is:-4.004 
+in:-4.132 
+it:-4.398 
+that:-4.399 
+not:-4.643 
+
+Class:1| 
+the:-2.822 
+a:-3.540 
+and:-3.558 
+of:-3.620 
+to:-3.746 
+is:-3.882 
+in:-4.087 
+it:-4.431 
+that:-4.455 
+as:-4.680 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+bats:-3.127 
+pollock:3.112 
+vikings:-2.746 
+wyatt:-2.672 
+8mm:-2.434 
+truman:2.406 
+mulholland:-2.304 
+deuce:-2.304 
+roberto:2.291 
+bowfinger:2.260 
+curdled:2.196 
+uncompromising:2.196 
+mpaa:2.196 
+tectonic:-2.186 
+hav:-2.186 
+godzilla:-2.152 
+darren:-2.144 
+unzipped:2.091 
+alchemy:2.091 
+nosferatu:1.973 
+
+
+#SCORE f1:0.684492 tp:64 fn:40 fp:19 tn:77
+0.684492,64,40,19,77
+#Word Rankings
+Class:-1| 
+the:-2.892 
+a:-3.561 
+and:-3.694 
+of:-3.708 
+to:-3.718 
+is:-3.993 
+in:-4.135 
+that:-4.387 
+it:-4.397 
+not:-4.647 
+
+Class:1| 
+the:-2.827 
+a:-3.547 
+and:-3.564 
+of:-3.632 
+to:-3.754 
+is:-3.889 
+in:-4.095 
+it:-4.431 
+that:-4.467 
+as:-4.696 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+krippendorf:-3.576 
+vikings:-2.750 
+bats:-2.750 
+8mm:-2.438 
+truman:2.402 
+roberto:2.287 
+tomb:-2.251 
+curdled:2.192 
+tectonic:-2.190 
+hav:-2.190 
+frequency:2.158 
+darren:-2.147 
+godzilla:-2.116 
+niagara:2.087 
+alchemy:2.087 
+bowfinger:2.087 
+metro:-2.020 
+uncompromising:1.969 
+stendhal:1.969 
+barb:-1.902 
+
+
+#SCORE f1:0.716667 tp:86 fn:6 fp:62 tn:46
+0.716667,86,6,62,46
+#Word Rankings
+Class:-1| 
+the:-2.904 
+a:-3.573 
+and:-3.712 
+to:-3.720 
+of:-3.722 
+is:-4.008 
+in:-4.152 
+that:-4.404 
+it:-4.413 
+not:-4.649 
+
+Class:1| 
+the:-2.821 
+a:-3.538 
+and:-3.547 
+of:-3.616 
+to:-3.741 
+is:-3.868 
+in:-4.079 
+it:-4.426 
+that:-4.448 
+as:-4.665 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+pollock:3.124 
+nosferatu:2.678 
+hedwig:2.544 
+vikings:-2.493 
+bats:-2.493 
+truman:2.352 
+mulholland:-2.292 
+8mm:-2.264 
+curdled:2.208 
+roberto:2.208 
+mpaa:2.208 
+tectonic:-2.174 
+hav:-2.174 
+frequency:2.174 
+godzilla:-2.156 
+niagara:2.103 
+unzipped:2.103 
+uncompromising:2.103 
+alchemy:2.103 
+darren:-2.087 
+
+
+#SCORE f1:0.692683 tp:71 fn:27 fp:36 tn:66
+0.692683,71,27,36,66
+#Word Rankings
+Class:-1| 
+the:-2.897 
+a:-3.567 
+and:-3.695 
+to:-3.717 
+of:-3.718 
+is:-3.997 
+in:-4.145 
+that:-4.398 
+it:-4.408 
+not:-4.645 
+
+Class:1| 
+the:-2.823 
+a:-3.542 
+and:-3.561 
+of:-3.625 
+to:-3.744 
+is:-3.878 
+in:-4.081 
+it:-4.425 
+that:-4.450 
+as:-4.691 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+bowfinger:3.423 
+bats:-3.148 
+pollock:3.075 
+54:-3.048 
+vikings:-2.742 
+barb:-2.588 
+truman:2.448 
+godzilla:-2.414 
+mulholland:-2.300 
+gregg:-2.300 
+roberto:2.295 
+tomb:-2.243 
+tectonic:-2.183 
+hav:-2.183 
+8mm:-2.151 
+frequency:2.148 
+darren:-2.096 
+curdled:2.094 
+niagara:2.094 
+unzipped:2.094 
+
+
+#SCORE f1:0.735294 tp:75 fn:26 fp:28 tn:71
+0.735294,75,26,28,71
+#Word Rankings
+Class:-1| 
+the:-2.890 
+a:-3.567 
+and:-3.698 
+of:-3.712 
+to:-3.715 
+is:-3.992 
+in:-4.140 
+it:-4.400 
+that:-4.401 
+not:-4.645 
+
+Class:1| 
+the:-2.828 
+a:-3.550 
+and:-3.563 
+of:-3.629 
+to:-3.743 
+is:-3.882 
+in:-4.100 
+it:-4.432 
+that:-4.460 
+as:-4.685 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+darren:-3.222 
+pollock:3.132 
+8mm:-3.107 
+bats:-2.726 
+vikings:-2.652 
+elmore:2.478 
+truman:2.370 
+bowfinger:2.370 
+mulholland:-2.284 
+curdled:2.216 
+uncompromising:2.216 
+frequency:2.182 
+godzilla:-2.166 
+tectonic:-2.166 
+hav:-2.166 
+niagara:2.110 
+unzipped:2.110 
+roberto:2.110 
+alchemy:2.110 
+metro:-1.996 
+
+
+#SCORE f1:0.680851 tp:64 fn:38 fp:22 tn:76
+0.680851,64,38,22,76
+#Word Rankings
+Class:-1| 
+the:-2.888 
+a:-3.566 
+and:-3.696 
+of:-3.700 
+to:-3.709 
+is:-3.993 
+in:-4.137 
+that:-4.392 
+it:-4.404 
+not:-4.645 
+
+Class:1| 
+the:-2.829 
+a:-3.543 
+and:-3.562 
+of:-3.629 
+to:-3.754 
+is:-3.885 
+in:-4.091 
+it:-4.433 
+that:-4.458 
+as:-4.682 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+pollock:3.131 
+tomb:-2.921 
+truman:2.545 
+bats:-2.390 
+bowfinger:2.369 
+vikings:-2.285 
+mulholland:-2.285 
+8mm:-2.257 
+curdled:2.215 
+godzilla:-2.193 
+frequency:2.181 
+tectonic:-2.167 
+darren:-2.124 
+niagara:2.110 
+unzipped:2.110 
+roberto:2.110 
+uncompromising:2.110 
+alchemy:2.110 
+metro:-1.997 
+nosferatu:1.992 
+
+
+#SCORE f1:0.525641 tp:41 fn:69 fp:5 tn:85
+0.525641,41,69,5,85
+#Word Rankings
+Class:-1| 
+the:-2.882 
+a:-3.554 
+and:-3.684 
+of:-3.701 
+to:-3.709 
+is:-3.986 
+in:-4.128 
+that:-4.384 
+it:-4.392 
+not:-4.628 
+
+Class:1| 
+the:-2.835 
+a:-3.558 
+and:-3.576 
+of:-3.638 
+to:-3.754 
+is:-3.891 
+in:-4.100 
+it:-4.446 
+that:-4.465 
+as:-4.689 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+pollock:3.120 
+bats:-2.714 
+8mm:-2.426 
+vikings:-2.401 
+bowfinger:2.358 
+truman:2.314 
+mulholland:-2.296 
+godzilla:-2.255 
+tomb:-2.239 
+curdled:2.204 
+hav:-2.178 
+niagara:2.099 
+unzipped:2.099 
+alchemy:2.099 
+roberto:1.981 
+uncompromising:1.981 
+stendhal:1.981 
+reindeer:-1.944 
+metro:-1.931 
+barb:-1.890 
+
+
+#SCORE f1:0.666667 tp:63 fn:40 fp:23 tn:74
+0.666667,63,40,23,74
+#Word Rankings
+Class:-1| 
+the:-2.891 
+a:-3.566 
+and:-3.695 
+of:-3.702 
+to:-3.713 
+is:-4.001 
+in:-4.131 
+that:-4.401 
+it:-4.406 
+not:-4.633 
+
+Class:1| 
+the:-2.827 
+a:-3.546 
+and:-3.564 
+of:-3.627 
+to:-3.747 
+is:-3.883 
+in:-4.086 
+it:-4.427 
+that:-4.459 
+as:-4.680 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+metro:-3.395 
+pollock:3.119 
+gordie:-2.872 
+bats:-2.739 
+vikings:-2.739 
+8mm:-2.690 
+truman:2.503 
+godzilla:-2.481 
+bowfinger:2.328 
+roberto:2.298 
+tomb:-2.240 
+curdled:2.203 
+deceiver:2.203 
+uncompromising:2.203 
+tectonic:-2.179 
+ugh:-2.179 
+hav:-2.179 
+darren:-2.137 
+frequency:2.134 
+niagara:2.098 
+
+
+f1scoreAvg:0.683
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 39 seconds
+[INFO] Finished at: Mon Feb 13 22:56:46 PST 2012
+[INFO] Final Memory: 19M/173M
+[INFO] ------------------------------------------------------------------------

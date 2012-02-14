@@ -1,0 +1,541 @@
+[INFO] 
+NOTE: Maven is executing in offline mode. Any artifacts not already in your local
+repository will be inaccessible.
+
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building bhdmhw1
+[INFO]    task-segment: [scala:compile, scala:run]
+[INFO] ------------------------------------------------------------------------
+[INFO] [scala:compile {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] includes = [**/*.scala,**/*.java,]
+[INFO] excludes = []
+[INFO] /home/javirosa/projects/bhdm/bhdmhw1/src/main/scala:-1: info: compiling
+[INFO] Compiling 2 source files to /home/javirosa/projects/bhdm/bhdmhw1/target/classes at 1329199331481
+[WARNING] warning: there were deprecation warnings; re-run with -deprecation for details
+[WARNING] one warning found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 10 s
+[INFO] Preparing scala:run
+[INFO] [resources:resources {execution: default-resources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2005 resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Nothing to compile - all classes are up to date
+[INFO] [resources:testResources {execution: default-testResources}]
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/javirosa/projects/bhdm/bhdmhw1/src/test/resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] No sources to compile
+[INFO] [scala:run {execution: default-cli}]
+[INFO] Checking for multiple versions of scala
+[INFO] launcher 'Main' selected => com.manmachinesoftware.app.bhdmhw1.Main
+#SCORE f1:0.691176 tp:94 fn:0 fp:84 tn:22
+0.691176,94,0,84,22
+#Word Rankings
+Class:-1| 
+and:-1.387 
+not:-1.419 
+have:-1.495 
+one:-1.522 
+film:-1.541 
+his:-1.543 
+he:-1.572 
+movie:-1.596 
+all:-1.609 
+out:-1.621 
+
+Class:1| 
+and:-1.367 
+not:-1.414 
+his:-1.468 
+film:-1.473 
+one:-1.474 
+he:-1.528 
+have:-1.553 
+has:-1.559 
+all:-1.571 
+out:-1.652 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.086 
+1912:1.953 
+intolerance:1.798 
+standoff:1.798 
+roberto:1.798 
+weighed:-1.785 
+marvelous:1.711 
+calendar:1.616 
+ugh:-1.603 
+vikings:-1.603 
+mpaa:1.547 
+keen:1.547 
+elmore:1.511 
+cinematically:1.511 
+coen:1.454 
+spoiled:-1.440 
+arriving:1.393 
+fritz:1.393 
+errol:1.393 
+hesitance:1.393 
+
+
+#SCORE f1:0.715867 tp:97 fn:2 fp:75 tn:26
+0.715867,97,2,75,26
+#Word Rankings
+Class:-1| 
+and:-1.378 
+not:-1.412 
+have:-1.498 
+one:-1.505 
+film:-1.527 
+his:-1.536 
+he:-1.558 
+movie:-1.584 
+all:-1.600 
+out:-1.602 
+
+Class:1| 
+and:-1.375 
+not:-1.416 
+his:-1.474 
+film:-1.480 
+one:-1.482 
+he:-1.528 
+has:-1.557 
+have:-1.564 
+all:-1.583 
+more:-1.646 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+fortunate:2.081 
+1912:2.081 
+uncompromising:2.081 
+roberto:1.947 
+marvelous:1.793 
+calendar:1.793 
+weighed:-1.791 
+intolerance:1.611 
+mediums:1.611 
+standoff:1.611 
+vikings:-1.608 
+keen:1.542 
+guilt:1.483 
+coen:1.467 
+ugh:-1.465 
+worst:-1.433 
+elmore:1.387 
+melvin:1.387 
+fritz:1.387 
+trailing:1.387 
+
+
+#SCORE f1:0.678832 tp:93 fn:4 fp:84 tn:19
+0.678832,93,4,84,19
+#Word Rankings
+Class:-1| 
+and:-1.382 
+not:-1.411 
+have:-1.503 
+one:-1.506 
+his:-1.536 
+film:-1.537 
+he:-1.569 
+movie:-1.585 
+all:-1.603 
+out:-1.604 
+
+Class:1| 
+and:-1.372 
+not:-1.421 
+one:-1.479 
+film:-1.481 
+his:-1.481 
+he:-1.534 
+has:-1.552 
+have:-1.552 
+all:-1.586 
+more:-1.648 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.201 
+1912:2.083 
+roberto:1.949 
+calendar:1.949 
+mpaa:1.875 
+marvelous:1.836 
+intolerance:1.795 
+elmore:1.613 
+devotees:1.613 
+vikings:-1.606 
+wyatt:-1.606 
+weighed:-1.606 
+ugh:-1.537 
+worst:-1.463 
+submarine:1.390 
+coen:1.390 
+fritz:1.390 
+standoff:1.390 
+trailing:1.390 
+errol:1.390 
+
+
+#SCORE f1:0.757202 tp:92 fn:12 fp:47 tn:49
+0.757202,92,12,47,49
+#Word Rankings
+Class:-1| 
+and:-1.370 
+not:-1.402 
+have:-1.489 
+one:-1.501 
+film:-1.527 
+his:-1.528 
+he:-1.548 
+movie:-1.577 
+all:-1.591 
+out:-1.602 
+
+Class:1| 
+and:-1.382 
+not:-1.431 
+one:-1.486 
+film:-1.492 
+his:-1.492 
+he:-1.545 
+have:-1.557 
+has:-1.575 
+all:-1.594 
+more:-1.671 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+1912:2.075 
+uncompromising:2.075 
+ugh:-2.019 
+roberto:1.942 
+marvelous:1.787 
+intolerance:1.787 
+standoff:1.787 
+calendar:1.787 
+vikings:-1.614 
+weighed:-1.614 
+mpaa:1.536 
+worst:-1.517 
+keen:1.462 
+revolutionary:1.462 
+krippendorf:-1.391 
+salaries:-1.391 
+beware:-1.391 
+ahh:-1.391 
+alexandre:-1.391 
+elmore:1.382 
+
+
+#SCORE f1:0.686792 tp:91 fn:1 fp:82 tn:26
+0.686792,91,1,82,26
+#Word Rankings
+Class:-1| 
+and:-1.390 
+not:-1.420 
+have:-1.502 
+one:-1.512 
+film:-1.540 
+his:-1.540 
+he:-1.565 
+movie:-1.591 
+out:-1.609 
+all:-1.616 
+
+Class:1| 
+and:-1.364 
+not:-1.414 
+his:-1.466 
+film:-1.472 
+one:-1.473 
+he:-1.525 
+have:-1.547 
+has:-1.556 
+all:-1.589 
+more:-1.647 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+keen:2.494 
+uncompromising:2.088 
+1912:1.955 
+mpaa:1.881 
+intolerance:1.801 
+standoff:1.801 
+roberto:1.801 
+calendar:1.801 
+weighed:-1.783 
+marvelous:1.758 
+nosferatu:1.618 
+elmore:1.618 
+anxious:1.618 
+anna:1.513 
+ugh:-1.458 
+dreamworks:1.395 
+accepting:1.395 
+trailing:1.395 
+errol:1.395 
+hesitance:1.395 
+
+
+#SCORE f1:0.735632 tp:96 fn:2 fp:67 tn:35
+0.735632,96,2,67,35
+#Word Rankings
+Class:-1| 
+and:-1.379 
+not:-1.411 
+have:-1.498 
+one:-1.515 
+his:-1.529 
+film:-1.538 
+he:-1.556 
+movie:-1.583 
+all:-1.604 
+out:-1.605 
+
+Class:1| 
+and:-1.373 
+not:-1.420 
+one:-1.477 
+film:-1.481 
+his:-1.484 
+he:-1.528 
+have:-1.555 
+has:-1.569 
+all:-1.593 
+out:-1.660 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+marvelous:2.199 
+uncompromising:2.082 
+1912:1.948 
+roberto:1.948 
+calendar:1.948 
+standoff:1.794 
+bowfinger:1.794 
+gregg:-1.790 
+vikings:-1.607 
+sensuous:-1.607 
+weighed:-1.607 
+mpaa:1.543 
+ugh:-1.538 
+elmore:1.506 
+worst:-1.449 
+intolerance:1.388 
+fritz:1.388 
+fairy:1.388 
+trailing:1.388 
+errol:1.388 
+
+
+#SCORE f1:0.761506 tp:91 fn:10 fp:47 tn:52
+0.761506,91,10,47,52
+#Word Rankings
+Class:-1| 
+and:-1.375 
+not:-1.407 
+have:-1.489 
+one:-1.505 
+his:-1.526 
+film:-1.535 
+he:-1.551 
+movie:-1.577 
+all:-1.601 
+out:-1.602 
+
+Class:1| 
+and:-1.378 
+not:-1.423 
+one:-1.483 
+his:-1.489 
+film:-1.493 
+he:-1.545 
+have:-1.564 
+has:-1.569 
+all:-1.595 
+more:-1.661 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+elmore:2.301 
+uncompromising:2.196 
+marvelous:2.119 
+darren:-2.081 
+1912:1.945 
+calendar:1.945 
+weighed:-1.793 
+intolerance:1.791 
+playwright:1.791 
+standoff:1.791 
+roberto:1.791 
+preposterous:-1.542 
+8mm:-1.505 
+dreamworks:1.503 
+cinematically:1.503 
+ugh:-1.467 
+keen:1.465 
+revolutionary:1.465 
+worst:-1.464 
+vikings:-1.387 
+
+
+#SCORE f1:0.791304 tp:91 fn:11 fp:37 tn:61
+0.791304,91,11,37,61
+#Word Rankings
+Class:-1| 
+and:-1.373 
+not:-1.403 
+have:-1.490 
+one:-1.501 
+film:-1.528 
+his:-1.528 
+he:-1.551 
+movie:-1.574 
+has:-1.599 
+out:-1.600 
+
+Class:1| 
+and:-1.380 
+not:-1.430 
+his:-1.482 
+one:-1.485 
+film:-1.486 
+he:-1.543 
+have:-1.564 
+has:-1.568 
+all:-1.600 
+movie:-1.673 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+1912:2.077 
+uncompromising:2.077 
+calendar:1.944 
+weighed:-1.794 
+marvelous:1.790 
+standoff:1.790 
+wednesday:1.790 
+roberto:1.790 
+renee:-1.707 
+intolerance:1.607 
+worst:-1.532 
+defending:1.502 
+revolutionary:1.464 
+coen:1.445 
+forgetful:-1.388 
+preposterous:-1.388 
+tomb:-1.388 
+vikings:-1.388 
+salaries:-1.388 
+ahh:-1.388 
+
+
+#SCORE f1:0.722772 tp:73 fn:37 fp:19 tn:71
+0.722772,73,37,19,71
+#Word Rankings
+Class:-1| 
+and:-1.360 
+not:-1.388 
+have:-1.468 
+one:-1.494 
+film:-1.511 
+his:-1.512 
+he:-1.536 
+movie:-1.562 
+all:-1.589 
+out:-1.596 
+
+Class:1| 
+and:-1.394 
+not:-1.441 
+film:-1.498 
+one:-1.498 
+his:-1.498 
+he:-1.550 
+have:-1.574 
+has:-1.584 
+all:-1.612 
+more:-1.673 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+calendar:1.935 
+uncompromising:1.935 
+marvelous:1.861 
+1912:1.781 
+coen:1.663 
+weighed:-1.620 
+elmore:1.598 
+intolerance:1.598 
+standoff:1.598 
+wonderland:1.598 
+roberto:1.598 
+initially:1.505 
+worst:-1.501 
+spoiled:-1.458 
+forgetful:-1.397 
+vikings:-1.397 
+salaries:-1.397 
+fab:-1.397 
+ahh:-1.397 
+alexandre:-1.397 
+
+
+#SCORE f1:0.735043 tp:86 fn:17 fp:45 tn:52
+0.735043,86,17,45,52
+#Word Rankings
+Class:-1| 
+and:-1.372 
+not:-1.400 
+have:-1.490 
+one:-1.507 
+his:-1.522 
+film:-1.527 
+he:-1.552 
+movie:-1.571 
+out:-1.594 
+all:-1.596 
+
+Class:1| 
+and:-1.382 
+not:-1.427 
+one:-1.485 
+film:-1.489 
+his:-1.489 
+he:-1.542 
+has:-1.566 
+have:-1.576 
+all:-1.602 
+more:-1.674 
+
+#Distinguishing terms +ve implies that it is more prevalent in +ve sets
+uncompromising:2.194 
+marvelous:2.076 
+ugh:-2.018 
+1912:1.943 
+roberto:1.943 
+metro:-1.795 
+intolerance:1.788 
+wolfgang:1.788 
+calendar:1.788 
+lean:1.731 
+vikings:-1.613 
+weighed:-1.613 
+elmore:1.606 
+dreamworks:1.606 
+coen:1.606 
+standoff:1.606 
+buffalo:1.606 
+keen:1.537 
+worst:-1.529 
+mpaa:1.463 
+
+
+f1scoreAvg:0.728
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 41 seconds
+[INFO] Finished at: Mon Feb 13 22:02:50 PST 2012
+[INFO] Final Memory: 18M/171M
+[INFO] ------------------------------------------------------------------------
