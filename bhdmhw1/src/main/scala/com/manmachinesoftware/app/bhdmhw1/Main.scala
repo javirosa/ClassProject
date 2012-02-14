@@ -11,6 +11,7 @@ import scalala.tensor.counters.Counters.DefaultIntCounter
 import scalanlp.data.{LabeledDocument}
 import scalala.tensor.sparse.SparseVector
 import util.Random
+import java.io.IOException
 
 
 object Main
@@ -30,20 +31,42 @@ object Main
     var swRanknlAll = readSW(ranknlAll).toArray
     var swRanknl = readSW(ranknl).toArray
     var swNone = Array[String]()
+    var sWMap = Map("google" -> swGoogle, "mysql" -> swMysql, "nlall" -> swRanknlAll, "nl"-> swRanknl, "none"->swNone)
 
+    var xFold = 10
 
     //TEST CONDITIONS
-    var xFold = 10
-    util.Random.setSeed(0)
-    val swords = swRanknlAll
-    val stem = true
+    var swords = swRanknlAll
+    var stem = true 
+    var bernoulli = false
+    var alphaSmoothing = .001
+    var seed = 3
+    /*
+    //BASELINE
+    val swords = swNone
+    val stem = false
     val bernoulli = true
     val alphaSmoothing = 1
+    val seed = 0
+    */
 
 
     def main(args: Array[String]) = 
     {
+        /*
+        if (args.length == 5 ) {
+            stem = args(0).toLowercase.equals("true")
+            bernoulli = args(1).toLowercase.equals("true")
+            swords = swMap.getOrElse(args(2))
+            alphaSmoothing = args(3).toDouble
+            seed = args(4).toInt
+        } else {
+            println("Running defaults")
+        }
+        */
+
         //Randomize the data inputs for later separation into query and training sets
+        util.Random.setSeed(seed)
         var corpus = Random.shuffle(getData())
 
         //Bernoulli bayes without stemming or stopwords
@@ -52,6 +75,7 @@ object Main
         val sets = corpOrig.grouped(corpOrig.size/xFold).toSeq
 
         //For each set train on everything else, but that set
+        var f1scoreAvg:Double = 0.0
         val idxSize = wToIdxOrig.size
         for (i <- 0 until sets.size)
         {
@@ -59,20 +83,20 @@ object Main
             val classCorpus = train.groupBy((doc) => doc.label)
 
 
-            //Map documents to vectors
-            val booleanVecs = classCorpus.mapValues(
-            (seq) => seq.map(
-                (doc) => encode(wToIdxOrig.toMap,bernoulli,count(doc).toMap)
+            //Map documents to vectors and then compute term probabilities
+            val docVecs = classCorpus.mapValues(
+                (seq) => seq.map(
+                    (doc) => encode(wToIdxOrig.toMap,bernoulli,count(doc).toMap)
                 )
             )
             var termClassProbs = HashMap[Int,SparseVector](NEG -> new SparseVector(idxSize), POS -> new SparseVector(idxSize))
             termClassProbs.foreach( 
                 (kv) => { 
                     val lbl = kv._1; val vec = kv._2;
-                    val classSize = booleanVecs.getOrElse(lbl,null).size
+                    val classSize = docVecs.getOrElse(lbl,null).size
                     val prior = classSize.toDouble/(train.size)
                     for (i <- 0 until idxSize) vec.update(i, 0)
-                    booleanVecs.getOrElse(lbl,null).foreach( (v) => vec += v)
+                    docVecs.getOrElse(lbl,null).foreach( (v) => vec += v)
                     val totOccurances:Double = if(bernoulli) classSize.toDouble else vec.reduceLeft[(Int,Double)]((x,b) => (0,x._2 + b._2))._2
                     for (i <- 0 until idxSize) vec.update(i, math.log(((alphaSmoothing+vec(i))*prior)/(totOccurances+alphaSmoothing*idxSize))) 
                 }
@@ -99,17 +123,34 @@ object Main
             val fn = qClassVecs.getOrElse(POS,null).getOrElse(NEG,Seq()).size 
             val fp = qClassVecs.getOrElse(NEG,null).getOrElse(POS,Seq()).size 
 
-            println("#f1:%f tp:%d fn:%d fp:%d tn:%d".format(f1score(tp,fn,fp),tp,fn,fp,tn))
+            f1scoreAvg = f1scoreAvg + f1score(tp,fn,fp)
+            println("#SCORE f1:%f tp:%d fn:%d fp:%d tn:%d".format(f1score(tp,fn,fp),tp,fn,fp,tn))
             println("%f,%d,%d,%d,%d".format(f1score(tp,fn,fp),tp,fn,fp,tn))
 
-            //Print distinguishing words
-            for (x <-LABELS) {
-                println("Class:%d".format(x))
+            //Print high rank words
+            println("#Word Rankings")
+            for (x <-LABELS) 
+            {
+                println("Class:%d| ".format(x))
                 decode(idxToWOrig,termClassProbs.getOrElse(x,null)).toList.sortWith((x,y) => x._2 >= y._2).take(10).
-                            foreach(t => print("%s:%2.3f ".format(t._1,t._2)))
+                            foreach(t => print("%s:%2.3f \n".format(t._1,t._2)))
                 println();
             }
+
+
+            /*Print distinguishing words*/
+            println("#Distinguishing terms +ve implies that it is more prevalent in +ve sets")
+            var pVec = termClassProbs.getOrElse(POS,null).copy
+            pVec -= termClassProbs.getOrElse(NEG,null)
+
+            decode(idxToWOrig,pVec).toList.sortWith((x,y) => math.abs(x._2) >= math.abs(y._2)).take(20).
+                            foreach(t => print("%s:%2.3f \n".format(t._1,t._2)))
+            
+            println();
+            println();
         }
+
+        println("f1scoreAvg:%2.3f".format(f1scoreAvg/xFold))
     }
 
     def f1score(tp:Int,fn:Int,fp:Int):Double = 
@@ -181,20 +222,24 @@ object Main
     {
         var corpus = new ListBuffer[LabeledDocument[Double,String]]()
         //Open resource directories for +ve and -ve
-        val fnegPath = new java.io.File(getClass().getResource("/polarityData/neg").getFile())
-        val fposPath = new java.io.File(getClass().getResource("/polarityData/pos").getFile())
-        val fneg = fnegPath.list()
-        val fpos = fposPath.list()
+        try {
+            val fnegPath = new java.io.File(getClass().getResource("/polarityData/neg").getFile())
+            val fposPath = new java.io.File(getClass().getResource("/polarityData/pos").getFile())
+            val fneg = fnegPath.list()
+            val fpos = fposPath.list()
+            //Build corpus
+            for (review <- fneg) {
+                val seq = parseFile(new File(fnegPath,review))
+                corpus += (new LabeledDocument(review,NEG,immutable.HashMap((featureBody,seq))))
+            }
+            for (review <- fpos) {
+                val seq = parseFile(new File(fposPath,review))
+                corpus += (new LabeledDocument(review,POS,immutable.HashMap((featureBody,seq))))
+            }
+        } catch {
+            case ioe: IOException => println("Failure loading input file"); exit
+        }
         
-        //Build corpus
-        for (review <- fneg) {
-            val seq = parseFile(new File(fnegPath,review))
-            corpus += (new LabeledDocument(review,NEG,immutable.HashMap((featureBody,seq))))
-        }
-        for (review <- fpos) {
-            val seq = parseFile(new File(fposPath,review))
-            corpus += (new LabeledDocument(review,POS,immutable.HashMap((featureBody,seq))))
-        }
         return corpus
     }
 
@@ -215,7 +260,7 @@ object Main
         return string.split("\\s+").map((s:String) => s.trim)
     }
 
-    def stemDoc( fields:imMap[String,Seq[String]]): imMap[String,Seq[String]] = 
+    def stemDoc(fields:imMap[String,Seq[String]]): imMap[String,Seq[String]] = 
     {
         var dict:HashMap[String,Seq[String]] = HashMap[String,Seq[String]]()
         var words = ListBuffer[String]()
